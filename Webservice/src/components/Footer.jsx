@@ -13,7 +13,7 @@ export function Footer(){
             bottom: 0,
             zIndex: 100
         }}>
-           <a href="https://github.com/SkyeJxn/understand_the_matrix" target="_blank" rel="noopener noreferrer"><i className="pi pi-github"/></a>
+           <a href="https://github.com/Understand-the-Matrix/understand_the_matrix" target="_blank" rel="noopener noreferrer"><i className="pi pi-github"/></a>
         </div>
     )
 }
