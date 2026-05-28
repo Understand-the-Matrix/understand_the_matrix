@@ -27,16 +27,22 @@ import { useParams } from "react-router-dom";
  *   - Tutorial: navigation arrows
  *   - Challenge: continue button
  * - At the end of a level, renders `LevelEndContent` with links to the next level.
- */
+*/
 export function LevelRenderer(){
   const { mode, id } = useParams();
-
-    const [levelData, setLevelData] = useState([]);
-    const [error, setError] = useState(null);
-    const [metaData, setMetaData] = useState([]);
-
-    const [solutionState, setSolutionState] = useState(false);
-    const [continueStage, setContinueStage] = useState(0);
+  const [page, setPage] = useState("1");
+  const [levelData, setLevelData] = useState([]);
+  const [error, setError] = useState(null);
+  const [metaData, setMetaData] = useState([]);
+  const [solutionState, setSolutionState] = useState(false);
+  const [continueStage, setContinueStage] = useState(0);
+  const [currentPart, setCurrentPart] = useState(1);
+  const [progressValue, setProgressValue] = useState(0);
+  
+  const partsOnLevel = Math.max(
+      0,
+      ...levelData.map((e) => Number(e.part))
+  );
 
      useEffect(() => {
         fetch(`/data/${mode}/level_meta.json`)
@@ -50,14 +56,6 @@ export function LevelRenderer(){
         .catch(err => setError(err.message));
     }, [mode, id]);
     
-    const [page, setPage] = useState("1");
-    const [currentPart, setCurrentPart] = useState(1);
-    const [progressValue, setProgressValue] = useState(0);
-
-    const partsOnLevel = Math.max(
-        0,
-        ...levelData.map((e) => Number(e.part))
-    );
 
     // Reset view state when navigating to a different mode or level id
     useEffect(() => {
@@ -138,9 +136,9 @@ export function LevelRenderer(){
             </SolutionManager>
 
             
-          </>): (
+          </>): page !== "1" ? (
               <LevelEndContent nextLevelExists={nextLevelExists()} />
-            )}
+            ) : <LoadingElement/>}
         </div>
       );
 }
@@ -270,6 +268,12 @@ function Content({ part, continueStage }) {
   );
 }
 
+function LoadingElement() {
+  return (<div>
+    Loading
+  </div>)
+}
+
 async function getFileData(mode, level_id){
     const res = await getFile(mode, level_id);
     if (!res.ok) throw new Error("file not found");
@@ -280,7 +284,6 @@ async function getFileData(mode, level_id){
     return await fileRes.json();
 
 }
-
 
 function toBool(val) {
   return val === true || val === "True" || val === "true";
