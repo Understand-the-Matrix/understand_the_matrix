@@ -44,6 +44,7 @@
     "data": "userMatrix",
     "resultcol": "False",
     "determinant": "False",
-    "calcbtns": "True"
+    "calcbtns": "True",
+    "history": "True"
   }
 ]
