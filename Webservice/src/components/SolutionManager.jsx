@@ -53,6 +53,7 @@ export default function SolutionManager({ children, Data, page, part, continueSt
   
   const [solutionMatrix, setSolutionMatrix] = useState(null);
   const [userMatrix, setUserMatrix] = useState(null);
+  const [userMatrixHistory, setUserMatrixHistory] = useState([]);
   const [acceptance, setAcceptance] = useState(null);
   const [data, setData] = useState([]);
 
@@ -64,6 +65,7 @@ export default function SolutionManager({ children, Data, page, part, continueSt
     setData(curData);
     // reset
     setUserMatrix(null);
+    setUserMatrixHistory([]);
     setSolutionMatrix(null);
     setUserOption(null);
     setSolutionOption(null);
@@ -193,6 +195,16 @@ export default function SolutionManager({ children, Data, page, part, continueSt
 
   }, [userMatrix, acceptance, solutionMatrix]);
 
+  // add to userMatrixHistory 
+  useEffect(() => {
+    if (userMatrix === null) return;
+    if (userMatrix === userMatrixHistory.at(-1)) return;
+
+    setUserMatrixHistory(prev => [...prev, userMatrix]);
+    console.log(userMatrixHistory);
+  }, [userMatrix]);
+
+
   useEffect(() => {
     if (userOption === null) return;
     // (2) check, disabled -> (3) ckeck, clickable
@@ -217,6 +229,8 @@ export default function SolutionManager({ children, Data, page, part, continueSt
         solutionMatrix,
         setSolutionMatrix,
         userMatrix,
+        userMatrixHistory,
+        setUserMatrixHistory,
         setUserMatrix,
         acceptance,
         data

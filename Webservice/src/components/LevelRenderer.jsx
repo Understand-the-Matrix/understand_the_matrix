@@ -179,6 +179,8 @@ function Content({ part, continueStage }) {
     userOption,
     solutionMatrix,
     userMatrix, 
+    userMatrixHistory,
+    setUserMatrixHistory,
     setUserMatrix, 
     data
   } = useSolution();
@@ -208,7 +210,9 @@ function Content({ part, continueStage }) {
                                 DisableZV={[1,4,5].includes(continueStage)} 
                                 DisableZA={[1,4,5].includes(continueStage)} 
                                 DisableZM={[1,4,5].includes(continueStage)}
-                                history={toBool(row.history)} >
+                                history={toBool(row.history)} 
+                                userMatrixHistory={userMatrixHistory} 
+                                setUserMatrixHistory={setUserMatrixHistory} >
                       <StaticMatrix
                         data={row.data === "userMatrix" ? userMatrix 
                                 : row.data === "solutionMatrix" ? solutionMatrix
