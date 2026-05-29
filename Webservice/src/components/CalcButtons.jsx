@@ -16,7 +16,7 @@ import { Dropdown } from 'primereact/dropdown';
  * @param {function} setMatrix - Callback that displays the new matrix
  * @returns {JSX.Element}
  */
-export function CalcButtons({DisableZV = false, DisableZA = false, DisableZM = false, matrix, setMatrix}) {
+export function CalcButtons({children, DisableZV = false, DisableZA = false, DisableZM = false, matrix, setMatrix, history = false}) {
   const [mode, setMode] = useState(null); 
   // mode = "mult" | "add" | "switch" | null
   if (!Array.isArray(matrix)) return <></>;
@@ -24,6 +24,13 @@ export function CalcButtons({DisableZV = false, DisableZA = false, DisableZM = f
   return (
     <>
       {mode === null ? (
+        <>
+        <div className='dialog_footer'>
+          <Button label="Undo" icon="pi pi-replay" />
+          <Button label="Redo" icon="pi pi-refresh"  disabled={true}/>
+          {history && <Button label="History" icon="pi pi-history"  disabled={true}/>}
+        </div>
+        {children}
         <div className="calc_btns">
           <Button
             disabled={DisableZM}
@@ -41,6 +48,7 @@ export function CalcButtons({DisableZV = false, DisableZA = false, DisableZM = f
             <InlineMath math="\xrightarrow{\rm{ZV}_{ij}}" />
           </Button>
         </div>
+        </>
       ):(
       <>
       

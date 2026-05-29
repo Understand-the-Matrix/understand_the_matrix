@@ -202,6 +202,23 @@ function Content({ part, continueStage }) {
           {row.typ === "StaticMatrix" &&
             (
               <div className="matrix-row">
+
+                {toBool(row.calcbtns) ? (
+                  <CalcButtons matrix={userMatrix} setMatrix={setUserMatrix} 
+                                DisableZV={[1,4,5].includes(continueStage)} 
+                                DisableZA={[1,4,5].includes(continueStage)} 
+                                DisableZM={[1,4,5].includes(continueStage)}
+                                history={toBool(row.history)} >
+                      <StaticMatrix
+                        data={row.data === "userMatrix" ? userMatrix 
+                                : row.data === "solutionMatrix" ? solutionMatrix
+                                : parseMatrix(row.data) }
+                        resultCol={toBool(row.resultcol)}
+                        det={toBool(row.determinant)}
+                      />
+
+                  </CalcButtons>
+                ):
                 <StaticMatrix
                   data={row.data === "userMatrix" ? userMatrix 
                           : row.data === "solutionMatrix" ? solutionMatrix
@@ -209,12 +226,7 @@ function Content({ part, continueStage }) {
                   resultCol={toBool(row.resultcol)}
                   det={toBool(row.determinant)}
                 />
-                {toBool(row.calcbtns) && (
-                  <CalcButtons matrix={userMatrix} setMatrix={setUserMatrix} 
-                                DisableZV={[1,4,5].includes(continueStage)} 
-                                DisableZA={[1,4,5].includes(continueStage)} 
-                                DisableZM={[1,4,5].includes(continueStage)} />
-                )}
+                }
               </div>
             )}
           {row.typ === "CalcButtons" && Array.isArray(userMatrix) &&
