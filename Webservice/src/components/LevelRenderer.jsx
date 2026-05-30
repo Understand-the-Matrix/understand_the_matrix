@@ -179,9 +179,11 @@ function Content({ part, continueStage }) {
     userOption,
     solutionMatrix,
     userMatrix, 
+    setUserMatrix, 
     userMatrixHistory,
     setUserMatrixHistory,
-    setUserMatrix, 
+    rowOperationHistory,
+    setRowOperationHistory,
     data
   } = useSolution();
 
@@ -215,15 +217,20 @@ function Content({ part, continueStage }) {
                   <CalcButtons matrix={userMatrix} setMatrix={setUserMatrix} 
                                 DisableZV={[1,4,5].includes(continueStage)} 
                                 DisableZA={[1,4,5].includes(continueStage)} 
-                                DisableZM={[1,4,5].includes(continueStage)} />
+                                DisableZM={[1,4,5].includes(continueStage)} 
+                                rowOperationHistory={rowOperationHistory}
+                                setRowOperationHistory={setRowOperationHistory} />
                 )}
               </div>
             )}
           {row.typ === "MatrixHistory" && (
             <MatrixHistory history={toBool(row.history)} 
+                            rowOperations={toBool(row.rowOperations)}
                             userMatrixHistory={userMatrixHistory}
                             setUserMatrixHistory={setUserMatrixHistory}
-                            setMatrix={setUserMatrix} />
+                            setUserMatrix={setUserMatrix} 
+                            rowOperationHistory={rowOperationHistory}
+                            setRowOperationHistory={setRowOperationHistory}/>
           )}
           
           {row.typ === "CalcButtons" && Array.isArray(userMatrix) &&
@@ -231,7 +238,9 @@ function Content({ part, continueStage }) {
             <CalcButtons matrix={userMatrix} setMatrix={setUserMatrix} 
                         DisableZV={[1,4,5].includes(continueStage)} 
                         DisableZA={[1,4,5].includes(continueStage)} 
-                        DisableZM={[1,4,5].includes(continueStage)} />
+                        DisableZM={[1,4,5].includes(continueStage)}                                 
+                        rowOperationHistory={rowOperationHistory}
+                        setRowOperationHistory={setRowOperationHistory} />
           )}
           {row.typ === "EditableMatrix" && (
             <EditableMatrix

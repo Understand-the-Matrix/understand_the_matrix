@@ -16,7 +16,7 @@ import { Dropdown } from 'primereact/dropdown';
  * @param {function} setMatrix - Callback that displays the new matrix
  * @returns {JSX.Element}
  */
-export function CalcButtons({DisableZV = false, DisableZA = false, DisableZM = false, matrix, setMatrix}) {
+export function CalcButtons({DisableZV = false, DisableZA = false, DisableZM = false, matrix, setMatrix, rowOperationHistory, setRowOperationHistory}) {
   // mode = "mult" | "add" | "switch" | null
   const [mode, setMode] = useState(null); 
 
@@ -46,13 +46,13 @@ export function CalcButtons({DisableZV = false, DisableZA = false, DisableZM = f
       ):(
       <>
         {mode === "mult" && ( 
-          <MultInline matrix={matrix} setMatrix={setMatrix} onClose={() => setMode(null)} /> 
+          <MultInline matrix={matrix} setMatrix={setMatrix} onClose={() => setMode(null)} setRowOperationHistory={setRowOperationHistory} /> 
         )} 
         {mode === "add" && ( 
-          <AddInline matrix={matrix} setMatrix={setMatrix} onClose={() => setMode(null)} /> 
+          <AddInline matrix={matrix} setMatrix={setMatrix} onClose={() => setMode(null)} setRowOperationHistory={setRowOperationHistory} /> 
         )} 
         {mode === "switch" && ( 
-          <SwitchInline matrix={matrix} setMatrix={setMatrix} onClose={() => setMode(null)} /> 
+          <SwitchInline matrix={matrix} setMatrix={setMatrix} onClose={() => setMode(null)} setRowOperationHistory={setRowOperationHistory} /> 
         )}
       </>
       )}
@@ -60,7 +60,24 @@ export function CalcButtons({DisableZV = false, DisableZA = false, DisableZM = f
   );
 }
 
-function MultInline({ matrix, setMatrix, onClose }){
+export function RowOperation({mode, i, j, S}) {
+    if (mode === undefined || i === undefined) return <></>
+    if (mode != "switch" && S === undefined) return <></>
+    if (mode != "mult" && j === undefined) return <></>
+
+    if (mode === "mult"){
+      return <InlineMath math={`\\xrightarrow{\\rm{ZM}_{${i+1}}(${S})}`} />
+    }
+    if (mode === "add"){
+      return <InlineMath math={`\\xrightarrow{\\rm{ZA}_{${i+1}${j+1}}(${S})}`} />
+    }
+    else {
+      return <InlineMath math={`\\xrightarrow{\\rm{ZV}_{${i+1}${j+1}}}`} />
+    }
+}
+
+function MultInline({ matrix, setMatrix, onClose, setRowOperationHistory }){
+
   const dimension = matrix.length;
   const items = Array.from({ length: dimension }, (_, i) => ({
         label: `${i+1}`, value: i }
@@ -74,6 +91,7 @@ function MultInline({ matrix, setMatrix, onClose }){
     function onConfirm(){
       const newMatrix = MultiplyRow(matrix, rowValue, scalar);
       setMatrix(newMatrix);
+      setRowOperationHistory(prev => [...prev, {"mode": "mult", "i": rowValue, "S": scalar}]);
       onClose();
     }
     function handleInput(input){
@@ -145,7 +163,7 @@ function MultInline({ matrix, setMatrix, onClose }){
 
 }
 
-function AddInline({ matrix, setMatrix, onClose }) {
+function AddInline({ matrix, setMatrix, onClose, setRowOperationHistory }) {
   const dimension = matrix.length;
     const items = Array.from({ length: dimension }, (_, i) => ({
       label: `${i+1}`, value: i }
@@ -160,6 +178,7 @@ function AddInline({ matrix, setMatrix, onClose }) {
     function onConfirm() {
       const newMatrix = AddRows(matrix, sourceValue, targetValue, scalar);
       setMatrix(newMatrix);
+      setRowOperationHistory(prev => [...prev, {"mode": "add", "i": targetValue, "j": sourceValue, "S": scalar}]);
       onClose();
     }
 
@@ -236,7 +255,7 @@ function AddInline({ matrix, setMatrix, onClose }) {
 );
 }
 
-function SwitchInline({ matrix, setMatrix, onClose }) {
+function SwitchInline({ matrix, setMatrix, onClose, setRowOperationHistory }) {
   const dimension = matrix.length;
   const items = Array.from({ length: dimension }, (_, i) => ({
     label: `${i+1}`, value: i }
@@ -248,6 +267,7 @@ function SwitchInline({ matrix, setMatrix, onClose }) {
    function onConfirm() {
     const newMatrix = SwitchRows(matrix, sourceValue, targetValue);
     setMatrix(newMatrix);
+    setRowOperationHistory(prev => [...prev, {"mode": "switch", "i": targetValue, "j": sourceValue}]);
     onClose();
    }
 

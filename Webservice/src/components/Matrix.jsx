@@ -4,6 +4,7 @@ import { InlineMath } from 'react-katex';
 import { fraction } from "mathjs";
 import { Button } from "primereact/button";
 import { useState } from "react";
+import { RowOperation } from "./CalcButtons";
 /**
  * Component that renders a given matrix
  * 
@@ -169,7 +170,7 @@ export function EditableMatrix({ rows = 3, cols = 3, resultCol = false, det = fa
   );
 }
 
-export function MatrixHistory({history = false, userMatrixHistory, setUserMatrixHistory, setMatrix}){
+export function MatrixHistory({history = false, rowOperations, userMatrixHistory, setUserMatrixHistory, setUserMatrix, rowOperationHistory, setRowOperationHistory }){
   const [historyDisplay, setHistoryDisplay] = useState(false);
 
   function undoMatrix() {
@@ -177,8 +178,11 @@ export function MatrixHistory({history = false, userMatrixHistory, setUserMatrix
 
     const lastMatrix = userMatrixHistory.at(-2);   // matrix before last matrix
     const newHistory = userMatrixHistory.slice(0, -1); // without last matrix
+    const newRowOperationHistory = rowOperationHistory.slice(0, -1); // without last matrix
+
     setUserMatrixHistory(newHistory);
-    setMatrix(lastMatrix);
+    setRowOperationHistory(newRowOperationHistory);
+    setUserMatrix(lastMatrix);
   }
   if (userMatrixHistory === undefined) return <></>
   if (userMatrixHistory.length === 0) return <></>
@@ -187,13 +191,19 @@ export function MatrixHistory({history = false, userMatrixHistory, setUserMatrix
     <div className={historyDisplay ? "history-btns outline-button-group row-group" 
                               : "history-btns-only outline-button-group row-group"}>
       {history && <Button icon="pi pi-history" label="History" onClick={() => setHistoryDisplay(prev => (!prev))}/>}
-      <Button icon="pi pi-replay" disabled={userMatrixHistory.length <= 1} onClick={() => undoMatrix()}/>
+      <Button icon="pi pi-replay" label="Undo" disabled={userMatrixHistory.length <= 1} onClick={() => undoMatrix()}/>
       {/* <Button icon="pi pi-refresh"  disabled={true}/> */}
     </div>
 
     {historyDisplay && <div className='matrix-history'>
       {userMatrixHistory.map((matrix, index) => (
-          <StaticMatrix key={index} data={matrix} />
+          <div key={index} className="row-group">
+            <StaticMatrix data={matrix} />
+            {rowOperations && rowOperationHistory[index] && <RowOperation mode={rowOperationHistory[index].mode} 
+                                                          i={rowOperationHistory[index].i}
+                                                          j={rowOperationHistory[index].j}
+                                                          S={rowOperationHistory[index].S} />}
+          </div>
       ))}
     </div>}
   
