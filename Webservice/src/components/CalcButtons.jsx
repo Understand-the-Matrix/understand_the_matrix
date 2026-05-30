@@ -5,7 +5,6 @@ import { Button } from "primereact/button";
 import { InlineMath } from "react-katex";
 import { SwitchRows, MultiplyRow, AddRows } from "../utilities/CalcFunctions";
 import { Dropdown } from 'primereact/dropdown';
-import { StaticMatrix  } from './Matrix';
 
 /** 
  * Component that displays Calculation function buttons in challenges
@@ -17,36 +16,16 @@ import { StaticMatrix  } from './Matrix';
  * @param {function} setMatrix - Callback that displays the new matrix
  * @returns {JSX.Element}
  */
-export function CalcButtons({children, DisableZV = false, DisableZA = false, DisableZM = false, 
-                              matrix, setMatrix, 
-                              history = false, userMatrixHistory, setUserMatrixHistory}) {
+export function CalcButtons({DisableZV = false, DisableZA = false, DisableZM = false, matrix, setMatrix}) {
   // mode = "mult" | "add" | "switch" | null
   const [mode, setMode] = useState(null); 
-  const [historyDisplay, setHistoryDisplay] = useState(false);
 
   if (!Array.isArray(matrix)) return <></>;
   if(matrix.length === 0) return <></>;
 
-  function undoMatrix() {
-    if (userMatrixHistory.length <= 1) return;
-
-    const lastMatrix = userMatrixHistory.at(-2);   // matrix before last matrix
-    const newHistory = userMatrixHistory.slice(0, -1); // without last matrix
-
-    setUserMatrixHistory(newHistory);
-    setMatrix(lastMatrix);
-  }
-
   return (
-    <div>
+    <>
       {mode === null ? (
-        <div className='matrix-row'>
-        <div className='outline-button-group column-group'>
-          <Button icon="pi pi-replay" disabled={userMatrixHistory.length <= 1} onClick={() => undoMatrix()}/>
-          {/* <Button icon="pi pi-refresh"  disabled={true}/> */}
-          {history && <Button icon="pi pi-history"  onClick={() => setHistoryDisplay(prev => (!prev))}/>}
-        </div>
-        {children}
         <div className="calc_btns">
           <Button
             disabled={DisableZM}
@@ -64,10 +43,8 @@ export function CalcButtons({children, DisableZV = false, DisableZA = false, Dis
             <InlineMath math="\xrightarrow{\rm{ZV}_{ij}}" />
           </Button>
         </div>
-        </div>
       ):(
-      <div className='matrix-row'>
-        {children}
+      <>
         {mode === "mult" && ( 
           <MultInline matrix={matrix} setMatrix={setMatrix} onClose={() => setMode(null)} /> 
         )} 
@@ -77,21 +54,10 @@ export function CalcButtons({children, DisableZV = false, DisableZA = false, Dis
         {mode === "switch" && ( 
           <SwitchInline matrix={matrix} setMatrix={setMatrix} onClose={() => setMode(null)} /> 
         )}
-      </div>
+      </>
       )}
-    {historyDisplay && <MatrixHistory userMatrixHistory={userMatrixHistory}/>}
-    </div>
+    </>
   );
-}
-
-function MatrixHistory({userMatrixHistory = []}){
-  if (userMatrixHistory.length === 0) return <></>
-  return <div className='matrix-history'>
-    {userMatrixHistory.map(matrix => (
-          <StaticMatrix data={matrix} />
-    ))}
-  </div>
-
 }
 
 function MultInline({ matrix, setMatrix, onClose }){
