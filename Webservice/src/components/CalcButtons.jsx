@@ -41,7 +41,7 @@ export function CalcButtons({children, DisableZV = false, DisableZA = false, Dis
     <div>
       {mode === null ? (
         <div className='matrix-row'>
-        <div className='dialog_footer'>
+        <div className='outline-button-group column-group'>
           <Button icon="pi pi-replay" disabled={userMatrixHistory.length <= 1} onClick={() => undoMatrix()}/>
           {/* <Button icon="pi pi-refresh"  disabled={true}/> */}
           {history && <Button icon="pi pi-history"  onClick={() => setHistoryDisplay(prev => (!prev))}/>}
@@ -168,7 +168,7 @@ function MultInline({ matrix, setMatrix, onClose }){
 
   </div>
 
-  <div className='dialog_footer'>
+  <div className='column-group outline-button-group'>
       <Button label="Cancel" icon="pi pi-times" onClick={() => onClose()}/>
       <Button label="Apply" icon="pi pi-check" onClick={onConfirm} disabled={scalarFeedback === 'invalid'}/>
   </div>
@@ -260,7 +260,7 @@ function AddInline({ matrix, setMatrix, onClose }) {
 
   </div>
 
-  <div className='dialog_footer'>
+  <div className='column-group outline-button-group'>
       <Button label="Cancel" icon="pi pi-times" onClick={() => onClose()}/>
       <Button label="Apply" icon="pi pi-check" onClick={onConfirm} disabled={scalarFeedback === 'invalid'}/>
   </div>
@@ -314,7 +314,7 @@ function SwitchInline({ matrix, setMatrix, onClose }) {
 
   </div>
 
-  <div className='dialog_footer'>
+  <div className='column-group outline-button-group'>
       <Button label="Cancel" icon="pi pi-times" onClick={() => onClose()}/>
       <Button label="Apply" icon="pi pi-check" onClick={onConfirm} />
   </div>

@@ -85,3 +85,23 @@ button {
   font-size: small;
   border-radius: 12px;
 }
+
+.outline-button, .outline-button-group button {
+    border: 2px solid var(--color5);
+    padding: 5px;
+    font-size: small;
+    color: var(--color5);
+}
+
+.column-group {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.row-group {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
