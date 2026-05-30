@@ -153,7 +153,6 @@ export function LevelRenderer(){
  * UI elements based on the `data` structure provided by `SolutionManager`.
  *
  * @param {Number} part Current part within the page
- * 
  * @param {Number} continueStage Current continueStage to disable elements if the continueStage is 1,4 or 5 (part is completed)
  *
  * @returns {JSX.Element} A scrollable container with all content rows for the current part.
@@ -166,6 +165,7 @@ export function LevelRenderer(){
  *   - "katex": mathematical formulas
  *   - "StaticMatrix": static matrix display (optional with CalcButtons)
  *   - "CalcButtons": calculation buttons for matrices
+ *   - "MatrixHistory": displays previous matrices and corresponding row operations, including undo functionality
  *   - "EditableMatrix": editable matrix input
  *   - "Equations": equation display
  *   - "SelectionButtons": multiple-choice buttons

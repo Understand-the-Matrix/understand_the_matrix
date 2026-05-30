@@ -14,6 +14,8 @@ import { Dropdown } from 'primereact/dropdown';
  * @param {Boolean} DisableZM - Disables the Multiplication Button if true
  * @param {number[][]} matrix - Matrix given from the Challenge
  * @param {function} setMatrix - Callback that displays the new matrix
+ * @param {Array<Object>} rowOperationHistory - List of all performed row operations.
+ * @param {function} setRowOperationHistory - Callback to append new row operations.
  * @returns {JSX.Element}
  */
 export function CalcButtons({DisableZV = false, DisableZA = false, DisableZM = false, matrix, setMatrix, rowOperationHistory, setRowOperationHistory}) {
@@ -60,6 +62,16 @@ export function CalcButtons({DisableZV = false, DisableZA = false, DisableZM = f
   );
 }
 
+/**
+ * Displays a single row operation as a KaTeX arrow expression.
+ *
+ * @param {"mult"|"add"|"switch"} mode - Type of row operation.
+ * @param {number} i - First row index involved in the operation.
+ * @param {number} j - Second row index 
+ * @param {number} S - Scalar used in the operation
+ *
+ * @returns {JSX.Element}
+ */
 export function RowOperation({mode, i, j, S}) {
     if (mode === undefined || i === undefined) return <></>
     if (mode != "switch" && S === undefined) return <></>
