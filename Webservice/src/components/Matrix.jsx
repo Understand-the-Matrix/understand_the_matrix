@@ -183,12 +183,12 @@ export function MatrixHistory({history = false, userMatrixHistory, setUserMatrix
   if (userMatrixHistory === undefined) return <></>
   if (userMatrixHistory.length === 0) return <></>
 
-  return <div>
-    <div className='outline-button-group row-group'>
+  return <div className="content-element">
+    <div className={historyDisplay ? "history-btns outline-button-group row-group" 
+                              : "history-btns-only outline-button-group row-group"}>
+      {history && <Button icon="pi pi-history" label="History" onClick={() => setHistoryDisplay(prev => (!prev))}/>}
       <Button icon="pi pi-replay" disabled={userMatrixHistory.length <= 1} onClick={() => undoMatrix()}/>
       {/* <Button icon="pi pi-refresh"  disabled={true}/> */}
-      {history && <Button icon="pi pi-history" onClick={() => setHistoryDisplay(prev => (!prev))}/>}
-
     </div>
 
     {historyDisplay && <div className='matrix-history'>
