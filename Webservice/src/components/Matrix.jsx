@@ -170,6 +170,21 @@ export function EditableMatrix({ rows = 3, cols = 3, resultCol = false, det = fa
   );
 }
 
+/**
+ * Displays the history of matrices and row operations.
+ * Allows undoing the last operation and toggling the history view.
+ *
+ * @param {boolean} history - Whether the history toggle button is shown.
+ * @param {boolean} rowOperations - Whether row operations should be displayed.
+ * @param {Array<Object>} userMatrixHistory - List of all previous matrices.
+ * @param {function} setUserMatrixHistory - Setter to update matrix history.
+ * @param {function} setUserMatrix - Setter to update the currently displayed matrix.
+ * @param {Array<Object>} rowOperationHistory - List of performed row operations.
+ * @param {function} setRowOperationHistory - Setter to update row operation history.
+ *
+ * @returns {JSX.Element}
+ */
+
 export function MatrixHistory({history = false, rowOperations, userMatrixHistory, setUserMatrixHistory, setUserMatrix, rowOperationHistory, setRowOperationHistory }){
   const [historyDisplay, setHistoryDisplay] = useState(false);
 

@@ -43,7 +43,15 @@ import { fraction } from "mathjs";
  * - If the user selects an option, it is compared to the correct option.
  * - On success, `setSolutionState(true)` is triggered.
  *
- * **6. Context Exposure**
+ * **6. Matrix History**
+ * - Every time the userMatrix changes, it is appended to `userMatrixHistory`.
+ * - Used for undo functionality and visual history display.
+ *
+ * **7. Row Operation History**
+ * - Stores all performed row operations (ZM, ZA, ZV).
+ * - Used by MatrixHistory to display symbolic operations.
+ * 
+ * **8. Context Exposure**
  * All relevant state values and setters are exposed through `SolutionContext`.
  */
 export default function SolutionManager({ children, Data, page, part, continueStage, setSolutionState, setContinueStage }) {
