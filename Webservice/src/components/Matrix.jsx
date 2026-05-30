@@ -3,6 +3,7 @@ import '../styles/Matrix.css'
 import { InlineMath } from 'react-katex';
 import { fraction } from "mathjs";
 import { Button } from "primereact/button";
+import { useState } from "react";
 /**
  * Component that renders a given matrix
  * 
@@ -166,4 +167,36 @@ export function EditableMatrix({ rows = 3, cols = 3, resultCol = false, det = fa
       `}</style>
     </div>
   );
+}
+
+export function MatrixHistory({history = false, userMatrixHistory, setUserMatrixHistory, setMatrix}){
+  const [historyDisplay, setHistoryDisplay] = useState(false);
+
+  function undoMatrix() {
+    if (userMatrixHistory.length <= 1) return;
+
+    const lastMatrix = userMatrixHistory.at(-2);   // matrix before last matrix
+    const newHistory = userMatrixHistory.slice(0, -1); // without last matrix
+    setUserMatrixHistory(newHistory);
+    setMatrix(lastMatrix);
+  }
+  if (userMatrixHistory === undefined) return <></>
+  if (userMatrixHistory.length === 0) return <></>
+
+  return <div>
+    <div className='outline-button-group row-group'>
+      <Button icon="pi pi-replay" disabled={userMatrixHistory.length <= 1} onClick={() => undoMatrix()}/>
+      {/* <Button icon="pi pi-refresh"  disabled={true}/> */}
+      {history && <Button icon="pi pi-history" onClick={() => setHistoryDisplay(prev => (!prev))}/>}
+
+    </div>
+
+    {historyDisplay && <div className='matrix-history'>
+      {userMatrixHistory.map((matrix, index) => (
+          <StaticMatrix key={index} data={matrix} />
+      ))}
+    </div>}
+  
+  </div>
+
 }

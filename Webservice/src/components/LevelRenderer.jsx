@@ -1,6 +1,6 @@
 import "../styles/LevelDesign.css"
 import { InlineMath } from "react-katex";
-import { StaticMatrix, EditableMatrix } from "./Matrix";
+import { StaticMatrix, EditableMatrix, MatrixHistory } from "./Matrix";
 import React, { useState, useEffect, useRef } from "react";
 import { ContinueBtn, LevelEndContent, NavigationArrows, Toolbar } from "./LevelTools";
 import { CalcButtons } from "./CalcButtons";
@@ -204,25 +204,6 @@ function Content({ part, continueStage }) {
           {row.typ === "StaticMatrix" &&
             (
               <div className="matrix-row">
-
-                {toBool(row.calcbtns) ? (
-                  <CalcButtons matrix={userMatrix} setMatrix={setUserMatrix} 
-                                DisableZV={[1,4,5].includes(continueStage)} 
-                                DisableZA={[1,4,5].includes(continueStage)} 
-                                DisableZM={[1,4,5].includes(continueStage)}
-                                history={toBool(row.history)} 
-                                userMatrixHistory={userMatrixHistory} 
-                                setUserMatrixHistory={setUserMatrixHistory} >
-                      <StaticMatrix
-                        data={row.data === "userMatrix" ? userMatrix 
-                                : row.data === "solutionMatrix" ? solutionMatrix
-                                : parseMatrix(row.data) }
-                        resultCol={toBool(row.resultcol)}
-                        det={toBool(row.determinant)}
-                      />
-
-                  </CalcButtons>
-                ):
                 <StaticMatrix
                   data={row.data === "userMatrix" ? userMatrix 
                           : row.data === "solutionMatrix" ? solutionMatrix
@@ -230,9 +211,21 @@ function Content({ part, continueStage }) {
                   resultCol={toBool(row.resultcol)}
                   det={toBool(row.determinant)}
                 />
-                }
+                {toBool(row.calcbtns) && (
+                  <CalcButtons matrix={userMatrix} setMatrix={setUserMatrix} 
+                                DisableZV={[1,4,5].includes(continueStage)} 
+                                DisableZA={[1,4,5].includes(continueStage)} 
+                                DisableZM={[1,4,5].includes(continueStage)} />
+                )}
               </div>
             )}
+          {row.typ === "MatrixHistory" && (
+            <MatrixHistory history={toBool(row.history)} 
+                            userMatrixHistory={userMatrixHistory}
+                            setUserMatrixHistory={setUserMatrixHistory}
+                            setMatrix={setUserMatrix} />
+          )}
+          
           {row.typ === "CalcButtons" && Array.isArray(userMatrix) &&
             userMatrix.length > 0 && (
             <CalcButtons matrix={userMatrix} setMatrix={setUserMatrix} 

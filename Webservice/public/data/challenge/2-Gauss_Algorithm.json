@@ -37,7 +37,7 @@
     "typ": "text",
     "content": "Use the Gauss-Jordan algorithm."
   },
-    {
+  {
     "page": "1",
     "part": "1",
     "typ": "StaticMatrix",
@@ -46,5 +46,12 @@
     "determinant": "False",
     "calcbtns": "True",
     "history": "True"
+  },
+  {
+    "page": "1",
+    "part": "1",
+    "typ": "MatrixHistory",
+    "history": "True",
+    "rowOperations": "True"
   }
 ]
