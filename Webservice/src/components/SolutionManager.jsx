@@ -55,6 +55,9 @@ export default function SolutionManager({ children, Data, page, part, continueSt
   const [userMatrix, setUserMatrix] = useState(null);
   const [userMatrixHistory, setUserMatrixHistory] = useState([]);
   const [acceptance, setAcceptance] = useState(null);
+
+  const [rowOperationHistory, setRowOperationHistory] = useState([]);
+
   const [data, setData] = useState([]);
 
   // all parts to the current part
@@ -71,6 +74,7 @@ export default function SolutionManager({ children, Data, page, part, continueSt
     setSolutionOption(null);
     setOptions(null);
     setSolutionState(false);
+    setRowOperationHistory([]);
 
   }, [Data, page, part, setSolutionState]);
 
@@ -201,7 +205,6 @@ export default function SolutionManager({ children, Data, page, part, continueSt
     if (userMatrix === userMatrixHistory.at(-1)) return;
 
     setUserMatrixHistory(prev => [...prev, userMatrix]);
-    console.log(userMatrixHistory);
   }, [userMatrix]);
 
 
@@ -229,10 +232,12 @@ export default function SolutionManager({ children, Data, page, part, continueSt
         solutionMatrix,
         setSolutionMatrix,
         userMatrix,
+        setUserMatrix,
         userMatrixHistory,
         setUserMatrixHistory,
-        setUserMatrix,
         acceptance,
+        rowOperationHistory,
+        setRowOperationHistory,
         data
       }}
     >
