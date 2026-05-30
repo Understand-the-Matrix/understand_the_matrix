@@ -51,18 +51,6 @@ button {
     border-radius: 10px;
     outline: none;
 }
-.dialog_footer {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.dialog_footer button {
-    border: 2px solid var(--color5);
-    padding: 5px;
-    font-size: small;
-    color: var(--color5);
-}
 
 .arrow-wrapper {
   display: inline-flex;
