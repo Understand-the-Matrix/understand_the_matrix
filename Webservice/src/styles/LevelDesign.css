@@ -62,6 +62,9 @@ button {
 .katex {
     display: inline-flex;
 }
+.content-element {
+  padding: 10px;
+}
 
 .matrix-row {
   display: flex;
@@ -84,13 +87,29 @@ button {
   padding: 5px;
   font-size: small;
   border-radius: 12px;
+  border-top-left-radius: 0;
+}
+.history-btns button {
+  border-color: var(--color3) !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-bottom: 0 !important;
+  margin-left: 0 !important;
+}
+.history-btns-only button {
+  border-color: var(--color3) !important;
+  margin-left: 0 !important;
 }
 
 .outline-button, .outline-button-group button {
-    border: 2px solid var(--color5);
-    padding: 5px;
-    font-size: small;
-    color: var(--color5);
+  border: 2px solid var(--color5);
+  padding: 5px;
+  font-size: small;
+  color: var(--color5);
+  border-radius: 12px;
+  width: fit-content;
+  height: fit-content;
+  margin: 5px;
 }
 
 .column-group {
