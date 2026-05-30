@@ -195,9 +195,9 @@ export function MatrixHistory({history = false, rowOperations, userMatrixHistory
       {/* <Button icon="pi pi-refresh"  disabled={true}/> */}
     </div>
 
-    {historyDisplay && <div className='matrix-history'>
+    {historyDisplay && <div className='matrix-history wrap-group'>
       {userMatrixHistory.map((matrix, index) => (
-          <div key={index} className="row-group">
+          <div key={index} className="row-group wrap-group">
             <StaticMatrix data={matrix} />
             {rowOperations && rowOperationHistory[index] && <RowOperation mode={rowOperationHistory[index].mode} 
                                                           i={rowOperationHistory[index].i}
