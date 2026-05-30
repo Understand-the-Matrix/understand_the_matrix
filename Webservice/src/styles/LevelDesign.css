@@ -56,10 +56,10 @@ button {
     font-weight: bold;
     font-size: larger;
 }
-.titel, .text, .katex {
+.titel, .text, .math {
     padding: 10px;
 }
-.katex {
+.math {
     display: inline-flex;
 }
 .content-element {
@@ -67,24 +67,12 @@ button {
 }
 
 .matrix-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
   gap: 20px;
   margin: 20px;
 }
 .matrix-history {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 0px;
-  margin: 0px;
-  padding: 0;
   color: var(--color3);
   border: 2px solid var(--color3);
-  padding: 5px;
   font-size: small;
   border-radius: 12px;
   border-top-left-radius: 0;
@@ -123,4 +111,10 @@ button {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+.wrap-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }

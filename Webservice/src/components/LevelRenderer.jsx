@@ -201,11 +201,11 @@ function Content({ part, continueStage }) {
           {row.typ === "title" && <div className="titel">{row.content}</div>}
           {row.typ === "text" && <div className="text">{row.content}</div>}
           {row.typ === "katex" && (
-            <InlineMath className="katex" math={row.content} />
+            <InlineMath className="math" math={row.content} />
           )}
           {row.typ === "StaticMatrix" &&
             (
-              <div className="matrix-row">
+              <div className="matrix-row wrap-group">
                 <StaticMatrix
                   data={row.data === "userMatrix" ? userMatrix 
                           : row.data === "solutionMatrix" ? solutionMatrix
@@ -222,7 +222,7 @@ function Content({ part, continueStage }) {
                                 setRowOperationHistory={setRowOperationHistory} />
                 )}
               </div>
-            )}
+          )}
           {row.typ === "MatrixHistory" && (
             <MatrixHistory history={toBool(row.history)} 
                             rowOperations={toBool(row.rowOperations)}
@@ -232,7 +232,6 @@ function Content({ part, continueStage }) {
                             rowOperationHistory={rowOperationHistory}
                             setRowOperationHistory={setRowOperationHistory}/>
           )}
-          
           {row.typ === "CalcButtons" && Array.isArray(userMatrix) &&
             userMatrix.length > 0 && (
             <CalcButtons matrix={userMatrix} setMatrix={setUserMatrix} 

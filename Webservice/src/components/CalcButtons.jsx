@@ -64,16 +64,17 @@ export function RowOperation({mode, i, j, S}) {
     if (mode === undefined || i === undefined) return <></>
     if (mode != "switch" && S === undefined) return <></>
     if (mode != "mult" && j === undefined) return <></>
-
+    let inlineMath;
     if (mode === "mult"){
-      return <InlineMath math={`\\xrightarrow{\\rm{ZM}_{${i+1}}(${S})}`} />
+      inlineMath = <InlineMath math={`\\xrightarrow{\\rm{ZM}_{${i+1}}(${S})}`} style={{"padding": "0"}} />
     }
-    if (mode === "add"){
-      return <InlineMath math={`\\xrightarrow{\\rm{ZA}_{${i+1}${j+1}}(${S})}`} />
+    else if (mode === "add"){
+      inlineMath = <InlineMath math={`\\xrightarrow{\\rm{ZA}_{${i+1}${j+1}}(${S})}`} />
     }
     else {
-      return <InlineMath math={`\\xrightarrow{\\rm{ZV}_{${i+1}${j+1}}}`} />
+      inlineMath = <InlineMath math={`\\xrightarrow{\\rm{ZV}_{${i+1}${j+1}}}`} />
     }
+    return <div style={{"fontSize": "1.5rem"}}>{inlineMath}</div>
 }
 
 function MultInline({ matrix, setMatrix, onClose, setRowOperationHistory }){
