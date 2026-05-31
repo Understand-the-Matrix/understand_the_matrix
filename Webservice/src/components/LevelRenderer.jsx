@@ -201,7 +201,7 @@ function Content({ part, continueStage }) {
           {row.typ === "title" && <div className="titel">{row.content}</div>}
           {row.typ === "text" && <div className="text">{row.content}</div>}
           {row.typ === "katex" && (
-            <InlineMath className="math" math={row.content} />
+            <div className="math" > <InlineMath math={row.content} /> </div>
           )}
           {row.typ === "StaticMatrix" &&
             (
