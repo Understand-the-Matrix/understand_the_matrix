@@ -33,7 +33,7 @@
 			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="global.html#AddRows">AddRows</a></li><li><a href="global.html#CalcButtons">CalcButtons</a></li><li><a href="global.html#Content">Content</a></li><li><a href="global.html#ContinueBtn">ContinueBtn</a></li><li><a href="global.html#EditableMatrix">EditableMatrix</a></li><li><a href="global.html#Equations">Equations</a></li><li><a href="global.html#getFile">getFile</a></li><li><a href="global.html#LevelEndContent">LevelEndContent</a></li><li><a href="global.html#LevelRenderer">LevelRenderer</a></li><li><a href="global.html#MatrixCreator">MatrixCreator</a></li><li><a href="global.html#MultiplyRow">MultiplyRow</a></li><li><a href="global.html#NavigationArrows">NavigationArrows</a></li><li><a href="global.html#SelectionButtons">SelectionButtons</a></li><li><a href="global.html#setTheme">setTheme</a></li><li><a href="global.html#SolutionVerifier">SolutionVerifier</a></li><li><a href="global.html#StaticMatrix">StaticMatrix</a></li><li><a href="global.html#SwitchRows">SwitchRows</a></li><li><a href="global.html#ThemeChanger">ThemeChanger</a></li><li><a href="global.html#Toolbar">Toolbar</a></li>
+					<li><a href="global.html#AddRows">AddRows</a></li><li><a href="global.html#CalcButtons">CalcButtons</a></li><li><a href="global.html#Content">Content</a></li><li><a href="global.html#ContinueBtn">ContinueBtn</a></li><li><a href="global.html#EditableMatrix">EditableMatrix</a></li><li><a href="global.html#Equations">Equations</a></li><li><a href="global.html#getFile">getFile</a></li><li><a href="global.html#LevelEndContent">LevelEndContent</a></li><li><a href="global.html#LevelRenderer">LevelRenderer</a></li><li><a href="global.html#MatrixCreator">MatrixCreator</a></li><li><a href="global.html#MatrixHistory">MatrixHistory</a></li><li><a href="global.html#MultiplyRow">MultiplyRow</a></li><li><a href="global.html#NavigationArrows">NavigationArrows</a></li><li><a href="global.html#RowOperation">RowOperation</a></li><li><a href="global.html#SelectionButtons">SelectionButtons</a></li><li><a href="global.html#setTheme">setTheme</a></li><li><a href="global.html#SolutionVerifier">SolutionVerifier</a></li><li><a href="global.html#StaticMatrix">StaticMatrix</a></li><li><a href="global.html#SwitchRows">SwitchRows</a></li><li><a href="global.html#ThemeChanger">ThemeChanger</a></li><li><a href="global.html#Toolbar">Toolbar</a></li>
 				</ul>
 			</li>
 			
@@ -366,7 +366,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="CalcButtons"><span class="type-signature"></span>CalcButtons(DisableZV, DisableZA, DisableZM, matrix, setMatrix)</h4>
+    <h4 class="name" id="CalcButtons"><span class="type-signature"></span>CalcButtons(DisableZV, DisableZA, DisableZM, matrix, setMatrix, rowOperationHistory, setRowOperationHistory)</h4>
     
     
 </dt>
@@ -526,6 +526,54 @@
         </tr>
 
     
+
+        <tr>
+            
+                <td class="name"><code>rowOperationHistory</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;Object></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>List of all performed row operations.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setRowOperationHistory</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Callback to append new row operations.</p></td>
+        </tr>
+
+    
     </tbody>
 </table>
 
@@ -627,6 +675,7 @@
 <li>&quot;katex&quot;: mathematical formulas</li>
 <li>&quot;StaticMatrix&quot;: static matrix display (optional with CalcButtons)</li>
 <li>&quot;CalcButtons&quot;: calculation buttons for matrices</li>
+<li>&quot;MatrixHistory&quot;: displays previous matrices and corresponding row operations, including undo functionality</li>
 <li>&quot;EditableMatrix&quot;: editable matrix input</li>
 <li>&quot;Equations&quot;: equation display</li>
 <li>&quot;SelectionButtons&quot;: multiple-choice buttons</li>
@@ -2513,6 +2562,299 @@ the solution (&quot;one&quot;, &quot;no&quot;, &quot;infinite&quot;).</p>
             
 <hr>
 <dt>
+    <h4 class="name" id="MatrixHistory"><span class="type-signature"></span>MatrixHistory(history, rowOperations, userMatrixHistory, setUserMatrixHistory, setUserMatrix, rowOperationHistory, setRowOperationHistory)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Displays the history of matrices and row operations.
+Allows undoing the last operation and toggling the history view.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>history</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Whether the history toggle button is shown.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>rowOperations</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Whether row operations should be displayed.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>userMatrixHistory</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;Object></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>List of all previous matrices.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setUserMatrixHistory</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Setter to update matrix history.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setUserMatrix</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Setter to update the currently displayed matrix.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>rowOperationHistory</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;Object></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>List of performed row operations.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setRowOperationHistory</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Setter to update row operation history.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
     <h4 class="name" id="MultiplyRow"><span class="type-signature"></span>MultiplyRow(matrix, Row, scalar)</h4>
     
     
@@ -2818,6 +3160,232 @@ the solution (&quot;one&quot;, &quot;no&quot;, &quot;infinite&quot;).</p>
             
 
             <td class="description last"><p>Callback-function for the forward button</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="RowOperation"><span class="type-signature"></span>RowOperation(mode, i, j, S)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Displays a single row operation as a KaTeX arrow expression.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">"mult"</span>
+|
+
+<span class="param-type">"add"</span>
+|
+
+<span class="param-type">"switch"</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Type of row operation.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>i</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>First row index involved in the operation.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>j</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Second row index</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>S</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Scalar used in the operation</p></td>
         </tr>
 
     
@@ -4235,7 +4803,7 @@ CSS class to the document body when selected.</p>
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a>
 	
-		on 2026-05-22T19:58:32+00:00
+		on 2026-06-01T12:29:46+00:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
