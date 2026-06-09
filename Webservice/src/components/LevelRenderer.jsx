@@ -10,6 +10,7 @@ import { useKeyMap } from "@/hooks/useKeyboard";
 import { useSolution } from "@/hooks/SolutionContext";
 import { getFile } from "../utilities/getFile";
 import { useParams } from "react-router-dom";
+import { ProgressSpinner } from 'primereact/progressspinner';
 
 /**
  * React component that renders a level (tutorial or challenge).
@@ -270,9 +271,9 @@ function Content({ part, continueStage }) {
 }
 
 function LoadingElement() {
-  return (<div>
-    Loading
-  </div>)
+  return (<>
+    <ProgressSpinner style={{width: '50px', height: '50px'}}/>
+  </>)
 }
 
 async function getFileData(mode, level_id){
