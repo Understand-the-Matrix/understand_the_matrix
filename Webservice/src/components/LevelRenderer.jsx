@@ -60,6 +60,7 @@ export function LevelRenderer(){
     // Reset view state when navigating to a different mode or level id
     useEffect(() => {
       setPage("1");
+      setLevelData([]);
       setCurrentPart(1);
       setProgressValue(0);
       setSolutionState(false);
