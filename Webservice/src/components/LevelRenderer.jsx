@@ -247,6 +247,8 @@ function Content({ part, continueStage }) {
               cols={Number(row.columns)}
               resultCol={toBool(row.resultcol)}
               det={toBool(row.determinant)}
+              userMatrix = {userMatrix}
+              initialMatrixValue = {toBool(row.initialMatrixValue)}
               onChange={setUserMatrix}
               disabled={[1,4,5].includes(continueStage)}
             />
