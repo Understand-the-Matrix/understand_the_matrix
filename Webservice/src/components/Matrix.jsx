@@ -59,11 +59,6 @@ export function EditableMatrix({ rows = 3, cols = 3, resultCol = false, det = fa
   const [matrix, setMatrix] = React.useState(Array.from({ length: rowState }, () => Array(colState).fill("")));
   const [fracMatrix, setFracMatrix] = React.useState(Array.from({ length: rowState }, () => Array(colState).fill(new fraction(0))));
   const [errors, setErrors] = React.useState(Array.from({ length: rowState }, () => Array(colState).fill(false)));
-  React.useEffect(() => {
-    setMatrix(Array.from({ length: rowState }, () => Array(colState).fill("")));
-    setFracMatrix(Array.from({ length: rowState }, () => Array(colState).fill(new fraction(0))));
-    setErrors(Array.from({ length: rowState }, () => Array(colState).fill(false)));
-  }, [rowState, colState]);
      
   const handleChange = (i, j, value) => {
     
@@ -113,6 +108,37 @@ export function EditableMatrix({ rows = 3, cols = 3, resultCol = false, det = fa
     }
   };
 
+  function addRow() {
+    setMatrix(prev => [...prev, Array(colState).fill("")]);
+    setFracMatrix(prev => [...prev, Array(colState).fill(fraction(0))]);
+    setErrors(prev => [...prev, Array(colState).fill(false)]);
+    setRowState(r => r + 1);
+  }
+
+  function removeRow() {
+    if (rowState <= 1) return;
+
+    setMatrix(prev => prev.slice(0, -1));
+    setFracMatrix(prev => prev.slice(0, -1));
+    setErrors(prev => prev.slice(0, -1));
+    setRowState(r => r - 1);
+  }
+
+  function addCol() {
+    setMatrix(prev => prev.map(row => [...row, ""]));
+    setFracMatrix(prev =>prev.map(row => [...row, fraction(0)]));
+    setErrors(prev => prev.map(row => [...row, false]));
+    setColState(c => c + 1);
+  }
+
+  function removeCol() {
+    if (colState <= 1) return;
+
+    setMatrix(prev => prev.map(row => row.slice(0, -1)));
+    setFracMatrix(prev => prev.map(row => row.slice(0, -1)));
+    setErrors(prev => prev.map(row => row.slice(0, -1)));
+    setColState(c => c - 1);
+  }
 
   const bracketLeft = det ? "|": "("
   const bracketRight = det ? "|": ")"
@@ -129,8 +155,8 @@ export function EditableMatrix({ rows = 3, cols = 3, resultCol = false, det = fa
       display: 'flex', alignItems: 'center'
     }}>
       <div style={{display: 'flex', flexDirection: 'column' }}>
-        <Button icon="pi pi-plus-circle" onClick={() => setColState(p => (p+1))} disabled={disabled} />
-        <Button icon="pi pi-minus-circle" onClick={() => setColState(p => Math.max(1, p-1))} disabled={disabled} />
+        <Button icon="pi pi-plus-circle" onClick={() => addCol()} disabled={disabled} />
+        <Button icon="pi pi-minus-circle" onClick={() => removeCol()} disabled={disabled} />
       </div>
     <div className="matrix-container">
       <InlineMath math={latexLeftBracket} />
@@ -158,8 +184,8 @@ export function EditableMatrix({ rows = 3, cols = 3, resultCol = false, det = fa
     </div>
     </div>
     <div style={{display: 'flex' }}>
-        <Button icon="pi pi-plus-circle" onClick={() => setRowState(p => (p+1))} disabled={disabled} />
-        <Button icon="pi pi-minus-circle" onClick={() => setRowState(p => Math.max(1, p-1))} disabled={disabled} />
+        <Button icon="pi pi-plus-circle" onClick={() => addRow()} disabled={disabled} />
+        <Button icon="pi pi-minus-circle" onClick={() => removeRow()} disabled={disabled} />
     </div>
       <style>{`
         .input-error {
