@@ -251,6 +251,7 @@ function Content({ part, continueStage }) {
               initialMatrixValue = {toBool(row.initialMatrixValue)}
               onChange={setUserMatrix}
               disabled={[1,4,5].includes(continueStage)}
+              fixedDimension={toBool(row.fixedDimension)}
             />
           )}
           {row.typ === "Equations" && (
