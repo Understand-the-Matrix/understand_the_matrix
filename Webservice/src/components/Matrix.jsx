@@ -52,9 +52,10 @@ export function StaticMatrix({data = [[1,2,3],[4,5,6],[7,8,9]], resultCol = fals
  * @param {boolean} initialMatrixValue - If true, the component prefill the inputs with the `userMatrix` once.
  * @param {fraction[][]} onChange - Callback, that returns the current matrix as Fractions
  * @param {boolean} [disabled=false] - disables all user inputs when true
+ * @param {boolean} [fixedDimension=false] - shows the buttons to change the matrix dimension when false
  * @returns {JSX.Element} 
  */
-export function EditableMatrix({ rows = 3, cols = 3, resultCol = false, det = false, userMatrix, initialMatrixValue=false, onChange, disabled=false }) {
+export function EditableMatrix({ rows = 3, cols = 3, resultCol = false, det = false, userMatrix, initialMatrixValue=false, onChange, disabled=false, fixedDimension=false }) {
   const [rowState, setRowState] = React.useState(rows);
   const [colState, setColState] = React.useState(cols);
 
@@ -172,7 +173,7 @@ export function EditableMatrix({ rows = 3, cols = 3, resultCol = false, det = fa
   const dummyRows = Array.from({ length: rowState }, () => "\\rule{0pt}{2em}").join(" \\\\ ");
   const latexLeftBracket = `\\left${bracketLeft}\\vphantom{\\begin{array}{c}${dummyRows}\\end{array}}\\right.`;
   const latexRightBracket = `\\left.\\vphantom{\\begin{array}{c}${dummyRows}\\end{array}}\\right${bracketRight}`;
-
+  console.log(fixedDimension);
   return (
     <div style={{
       display: 'flex', flexDirection: 'column', alignItems: 'center'
@@ -180,10 +181,11 @@ export function EditableMatrix({ rows = 3, cols = 3, resultCol = false, det = fa
     <div style={{
       display: 'flex', alignItems: 'center'
     }}>
+      {!fixedDimension && ( 
       <div style={{display: 'flex', flexDirection: 'column' }}>
         <Button icon="pi pi-plus-circle" onClick={() => addCol()} disabled={disabled} />
         <Button icon="pi pi-minus-circle" onClick={() => removeCol()} disabled={disabled} />
-      </div>
+      </div>)}
     <div className="matrix-container">
       <InlineMath math={latexLeftBracket} />
       <table className="matrix-inputs"><tbody>
@@ -209,10 +211,11 @@ export function EditableMatrix({ rows = 3, cols = 3, resultCol = false, det = fa
       <InlineMath math={latexRightBracket} />
     </div>
     </div>
+    {!fixedDimension && ( 
     <div style={{display: 'flex' }}>
         <Button icon="pi pi-plus-circle" onClick={() => addRow()} disabled={disabled} />
         <Button icon="pi pi-minus-circle" onClick={() => removeRow()} disabled={disabled} />
-    </div>
+    </div>)}
       <style>{`
         .input-error {
           border: 2px solid red !important;
