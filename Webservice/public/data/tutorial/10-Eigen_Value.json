@@ -1,0 +1,204 @@
+[
+  {
+    "page": "1",
+    "part": "1",
+    "typ": "title",
+    "content": "Eigenvalues and Eigenvectors"
+  },
+  {
+    "page": "1",
+    "part": "1",
+    "typ": "text",
+    "content": "When a matrix transforms a vector, the vector usually changes its direction and length."
+  },
+  {
+    "page": "1",
+    "part": "2",
+    "typ": "text",
+    "content": "Some special vectors keep their direction. Only their length changes. These vectors are called eigenvectors."
+  },
+  {
+    "page": "1",
+    "part": "2",
+    "typ": "text",
+    "content": "The factor by which the vector is scaled is called the eigenvalue."
+  },
+  {
+    "page": "1",
+    "part": "3",
+    "typ": "katex",
+    "content": "Av = \\lambda v"
+  },
+  {
+    "page": "1",
+    "part": "3",
+    "typ": "text",
+    "content": "Here, A is the matrix, v is the eigenvector and lambda is the eigenvalue."
+  },
+
+  {
+    "page": "2",
+    "part": "4",
+    "typ": "title",
+    "content": "Geometric Interpretation"
+  },
+  {
+    "page": "2",
+    "part": "4",
+    "typ": "text",
+    "content": "Most vectors change direction after a matrix transformation."
+  },
+  {
+    "page": "2",
+    "part": "5",
+    "typ": "text",
+    "content": "Eigenvectors stay on the same line. Only their length is scaled."
+  },
+  {
+    "page": "2",
+    "part": "5",
+    "typ": "katex",
+    "content": "A = \\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}"
+  },
+  {
+    "page": "2",
+    "part": "6",
+    "typ": "katex",
+    "content": "v = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}"
+  },
+  {
+    "page": "2",
+    "part": "6",
+    "typ": "katex",
+    "content": "Av = \\begin{pmatrix} 2 \\\\ 0 \\end{pmatrix} = 2v"
+  },
+  {
+    "page": "2",
+    "part": "6",
+    "typ": "text",
+    "content": "The vector v keeps its direction and is scaled by the factor 2."
+  },
+
+  {
+    "page": "3",
+    "part": "7",
+    "typ": "title",
+    "content": "Finding Eigenvalues"
+  },
+  {
+    "page": "3",
+    "part": "7",
+    "typ": "text",
+    "content": "To find the eigenvalues, solve the characteristic equation."
+  },
+  {
+    "page": "3",
+    "part": "8",
+    "typ": "katex",
+    "content": "\\det(A - \\lambda I) = 0"
+  },
+  {
+    "page": "3",
+    "part": "8",
+    "typ": "text",
+    "content": "The solutions for lambda are the eigenvalues."
+  },
+  {
+    "page": "3",
+    "part": "9",
+    "typ": "katex",
+    "content": "A = \\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}"
+  },
+  {
+    "page": "3",
+    "part": "9",
+    "typ": "katex",
+    "content": "\\det\\left(\\begin{pmatrix} 2-\\lambda & 0 \\\\ 0 & 3-\\lambda \\end{pmatrix}\\right)=0"
+  },
+  {
+    "page": "3",
+    "part": "9",
+    "typ": "katex",
+    "content": "(2-\\lambda)(3-\\lambda)=0"
+  },
+  {
+    "page": "3",
+    "part": "9",
+    "typ": "katex",
+    "content": "\\lambda_1 = 2, \\quad \\lambda_2 = 3"
+  },
+
+  {
+    "page": "4",
+    "part": "10",
+    "typ": "title",
+    "content": "Finding Eigenvectors"
+  },
+  {
+    "page": "4",
+    "part": "10",
+    "typ": "text",
+    "content": "For each eigenvalue, solve the homogeneous system."
+  },
+  {
+    "page": "4",
+    "part": "11",
+    "typ": "katex",
+    "content": "(A - \\lambda I)x = 0"
+  },
+  {
+    "page": "4",
+    "part": "12",
+    "typ": "text",
+    "content": "For lambda = 2:"
+  },
+  {
+    "page": "4",
+    "part": "12",
+    "typ": "katex",
+    "content": "A - 2I = \\begin{pmatrix} 0 & 0 \\\\ 0 & 1 \\end{pmatrix}"
+  },
+  {
+    "page": "4",
+    "part": "12",
+    "typ": "katex",
+    "content": "\\begin{pmatrix} 0 & 0 \\\\ 0 & 1 \\end{pmatrix}\\begin{pmatrix} x_1 \\\\ x_2 \\end{pmatrix}=\\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix}"
+  },
+  {
+    "page": "4",
+    "part": "12",
+    "typ": "katex",
+    "content": "x_2 = 0, \\quad x_1 \\in \\mathbb{R}"
+  },
+  {
+    "page": "4",
+    "part": "12",
+    "typ": "katex",
+    "content": "v_1 = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}"
+  },
+
+  {
+    "page": "5",
+    "part": "13",
+    "typ": "title",
+    "content": "Eigenspace"
+  },
+  {
+    "page": "5",
+    "part": "13",
+    "typ": "text",
+    "content": "The eigenspace contains all eigenvectors belonging to one eigenvalue and also the zero vector."
+  },
+  {
+    "page": "5",
+    "part": "14",
+    "typ": "katex",
+    "content": "E_\\lambda = \\ker(A - \\lambda I)"
+  },
+  {
+    "page": "5",
+    "part": "15",
+    "typ": "text",
+    "content": "In short: eigenvectors keep their direction, while eigenvalues describe the scaling factor."
+  }
+]
