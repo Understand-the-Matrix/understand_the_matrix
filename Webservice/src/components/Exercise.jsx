@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import { BlockMath} from "react-katex";
+import { BlockMath, InlineMath} from "react-katex";
 import { SelectButton } from "primereact/selectbutton";
 import { equal, smaller, randomInt, unaryMinus } from "mathjs";
 
@@ -124,21 +124,35 @@ export function Equations({ solMatrix }){
  * @param {string[]} options - a list of option labels to display as buttons
  * @param {function(string): void} onSelect - Callback fired when a new option is selected
  * @param {boolean} [disabled=false] - disables all buttons when true
+ * @param {boolean} [optionTyp="text"] - display content with KaTeX when optionTyp="katex"
  */
-export function SelectionButtons({ value , options, onSelect, disabled=false }) {
+export function SelectionButtons({ value , options, onSelect, disabled=false, optionTyp="text" }) {
 
   const opts = Array.isArray(options) ? options : [];
+
+  const shuffledOptions = useMemo(() => {
+    return [...opts].sort(() => Math.random() - 0.5);
+  }, [opts]);
+
+    const itemTemplate = (option) => {
+      return optionTyp == "katex"
+        ? <InlineMath math={option.label} />
+        : option.label;
+    };
 
   return (
     <div style={{
       padding: '10px',
+      display: "flex",
+      justifyContent: "center"
     }}>
     <SelectButton
       className="select_btn"
       value={value}
-      options={opts.map(o => ({ label: o, value: o }))}
+      options={shuffledOptions.map(o => ({ label: o, value: o }))}
       onChange={(e) => onSelect(e.value)}
       disabled={disabled}
+      itemTemplate={itemTemplate}
     />
     </div>
   );

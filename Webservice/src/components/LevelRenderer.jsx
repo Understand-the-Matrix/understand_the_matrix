@@ -177,6 +177,7 @@ function Content({ part, continueStage }) {
     options,
     setUserOption,
     userOption,
+    optionTyp,
     solutionMatrix,
     userMatrix, 
     setUserMatrix, 
@@ -265,6 +266,7 @@ function Content({ part, continueStage }) {
               options={options}
               onSelect={setUserOption}
               disabled={[4,5].includes(continueStage)}
+              optionTyp={optionTyp}
             />
           )}
         </React.Fragment>
