@@ -190,6 +190,12 @@ export default function SolutionManager({ children, Data, page, part, continueSt
       if (rowWithSolution.navigation === 'check'){
         setContinueStage(2);
       }
+      if (rowWithSolution.userMatrix !== undefined){
+        setUserMatrix(rowWithSolution.userMatrix);
+      }
+      if (rowWithSolution.solutionMatrix !== undefined){
+        setSolutionMatrix(rowWithSolution.solutionMatrix);
+      }
     
     }
   
