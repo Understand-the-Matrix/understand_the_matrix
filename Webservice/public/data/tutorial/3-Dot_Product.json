@@ -1,0 +1,350 @@
+[
+  {
+    "page": "1",
+    "part": "1",
+    "typ": "title",
+    "content": "Dot Product (Skalarprodukt)"
+  },
+  {
+    "page": "1",
+    "part": "1",
+    "typ": "text",
+    "content": "What is the Dot Product?"
+  },
+  {
+    "page": "1",
+    "part": "2",
+    "typ": "text",
+    "content": "The dot product (inner product) is a mathematical operation that takes two vectors and returns a scalar (a single number)."
+  },
+  {
+    "page": "1",
+    "part": "3",
+    "typ": "katex",
+    "content": "\\vec{a} \\cdot \\vec{b} = |\\vec{a}| \\cdot |\\vec{b}| \\cdot \\cos(\\varphi)"
+  },
+  {
+    "page": "1",
+    "part": "4",
+    "typ": "text",
+    "content": "Where:"
+  },
+  {
+    "page": "1",
+    "part": "4",
+    "typ": "text",
+    "content": "|a| and |b| are the lengths (magnitudes) of the vectors"
+  },
+  {
+    "page": "1",
+    "part": "5",
+    "typ": "text",
+    "content": "φ (phi) is the angle between the two vectors"
+  },
+  {
+    "page": "1",
+    "part": "6",
+    "typ": "text",
+    "content": "cos(φ) is the cosine of that angle"
+  },
+  {
+    "page": "2",
+    "part": "7",
+    "typ": "title",
+    "content": "Calculating in 2D coordinates"
+  },
+  {
+    "page": "2",
+    "part": "7",
+    "typ": "text",
+    "content": "For 2D vectors:"
+  },
+  {
+    "page": "2",
+    "part": "8",
+    "typ": "katex",
+    "content": "\\vec{a} = \\begin{pmatrix} a_1 \\\\ a_2 \\end{pmatrix}, \\quad \\vec{b} = \\begin{pmatrix} b_1 \\\\ b_2 \\end{pmatrix}"
+  },
+  {
+    "page": "2",
+    "part": "9",
+    "typ": "text",
+    "content": "The dot product is calculated as:"
+  },
+  {
+    "page": "2",
+    "part": "10",
+    "typ": "katex",
+    "content": "\\vec{a} \\cdot \\vec{b} = a_1 b_1 + a_2 b_2"
+  },
+  {
+    "page": "2",
+    "part": "11",
+    "typ": "text",
+    "content": "example: a = (3, 2), b = (1, 4)"
+  },
+  {
+    "page": "2",
+    "part": "12",
+    "typ": "katex",
+    "content": "\\vec{a} \\cdot \\vec{b} = 3 \\cdot 1 + 2 \\cdot 4 = 3 + 8 = 11"
+  },
+  {
+    "page": "3",
+    "part": "13",
+    "typ": "title",
+    "content": "Calculating in 3D coordinates"
+  },
+  {
+    "page": "3",
+    "part": "13",
+    "typ": "text",
+    "content": "For 3D vectors:"
+  },
+  {
+    "page": "3",
+    "part": "14",
+    "typ": "katex",
+    "content": "\\vec{a} = \\begin{pmatrix} a_1 \\\\ a_2 \\\\ a_3 \\end{pmatrix}, \\quad \\vec{b} = \\begin{pmatrix} b_1 \\\\ b_2 \\\\ b_3 \\end{pmatrix}"
+  },
+  {
+    "page": "3",
+    "part": "15",
+    "typ": "text",
+    "content": "The dot product is calculated as:"
+  },
+  {
+    "page": "3",
+    "part": "16",
+    "typ": "katex",
+    "content": "\\vec{a} \\cdot \\vec{b} = a_1 b_1 + a_2 b_2 + a_3 b_3"
+  },
+  {
+    "page": "3",
+    "part": "17",
+    "typ": "text",
+    "content": "example: a = (1, 2, 3), b = (-7, 8, 9)"
+  },
+  {
+    "page": "3",
+    "part": "18",
+    "typ": "katex",
+    "content": "\\vec{a} \\cdot \\vec{b} = 1 \\cdot (-7) + 2 \\cdot 8 + 3 \\cdot 9 = -7 + 16 + 27 = 36"
+  },
+  {
+    "page": "4",
+    "part": "19",
+    "typ": "title",
+    "content": "Important Properties"
+  },
+  {
+    "page": "4",
+    "part": "19",
+    "typ": "text",
+    "content": "Parallel and same direction (φ = 0°):"
+  },
+  {
+    "page": "4",
+    "part": "20",
+    "typ": "katex",
+    "content": "\\vec{a} \\cdot \\vec{b} = |\\vec{a}| \\cdot |\\vec{b}|"
+  },
+  {
+    "page": "4",
+    "part": "21",
+    "typ": "text",
+    "content": "Perpendicular/Orthogonal (φ = 90°):"
+  },
+  {
+    "page": "4",
+    "part": "22",
+    "typ": "katex",
+    "content": "\\vec{a} \\cdot \\vec{b} = 0"
+  },
+  {
+    "page": "4",
+    "part": "23",
+    "typ": "text",
+    "content": "Opposite direction (φ = 180°):"
+  },
+  {
+    "page": "4",
+    "part": "24",
+    "typ": "katex",
+    "content": "\\vec{a} \\cdot \\vec{b} = -|\\vec{a}| \\cdot |\\vec{b}|"
+  },
+  {
+    "page": "4",
+    "part": "25",
+    "typ": "text",
+    "content": "Commutative law:"
+  },
+  {
+    "page": "4",
+    "part": "26",
+    "typ": "katex",
+    "content": "\\vec{a} \\cdot \\vec{b} = \\vec{b} \\cdot \\vec{a}"
+  },
+  {
+    "page": "5",
+    "part": "27",
+    "typ": "title",
+    "content": "Length of a Vector"
+  },
+  {
+    "page": "5",
+    "part": "27",
+    "typ": "text",
+    "content": "A vector's dot product with itself gives the square of its length (Pythagorean theorem):"
+  },
+  {
+    "page": "5",
+    "part": "28",
+    "typ": "katex",
+    "content": "\\vec{a} \\cdot \\vec{a} = |\\vec{a}|^2 = a_1^2 + a_2^2 + a_3^2"
+  },
+  {
+    "page": "5",
+    "part": "29",
+    "typ": "text",
+    "content": "So the length is:"
+  },
+  {
+    "page": "5",
+    "part": "30",
+    "typ": "katex",
+    "content": "|\\vec{a}| = \\sqrt{a_1^2 + a_2^2 + a_3^2}"
+  },
+  {
+    "page": "5",
+    "part": "31",
+    "typ": "text",
+    "content": "example: a = (3, 4)"
+  },
+  {
+    "page": "5",
+    "part": "32",
+    "typ": "katex",
+    "content": "|\\vec{a}| = \\sqrt{3^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5"
+  },
+  {
+    "page": "6",
+    "part": "33",
+    "typ": "title",
+    "content": "Finding the Angle Between Vectors"
+  },
+  {
+    "page": "6",
+    "part": "33",
+    "typ": "text",
+    "content": "We can rearrange the formula to find the angle:"
+  },
+  {
+    "page": "6",
+    "part": "34",
+    "typ": "katex",
+    "content": "\\cos(\\varphi) = \\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{a}| \\cdot |\\vec{b}|}"
+  },
+  {
+    "page": "6",
+    "part": "35",
+    "typ": "katex",
+    "content": "\\varphi = \\arccos\\left(\\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{a}| \\cdot |\\vec{b}|}\\right)"
+  },
+  {
+    "page": "6",
+    "part": "36",
+    "typ": "text",
+    "content": "example: a = (1, 2, 3), b = (-7, 8, 9)"
+  },
+  {
+    "page": "6",
+    "part": "37",
+    "typ": "text",
+    "content": "We already know: a · b = 36"
+  },
+  {
+    "page": "6",
+    "part": "38",
+    "typ": "katex",
+    "content": "|\\vec{a}| = \\sqrt{1^2 + 2^2 + 3^2} = \\sqrt{14} \\approx 3.74"
+  },
+  {
+    "page": "6",
+    "part": "39",
+    "typ": "katex",
+    "content": "|\\vec{b}| = \\sqrt{(-7)^2 + 8^2 + 9^2} = \\sqrt{194} \\approx 13.93"
+  },
+  {
+    "page": "7",
+    "part": "40",
+    "typ": "katex",
+    "content": "\\cos(\\varphi) = \\frac{36}{\\sqrt{14} \\cdot \\sqrt{194}} \\approx 0.691"
+  },
+  {
+    "page": "7",
+    "part": "41",
+    "typ": "katex",
+    "content": "\\varphi = \\arccos(0.691) \\approx 46.3°"
+  },
+  {
+    "page": "7",
+    "part": "42",
+    "typ": "title",
+    "content": "Orthogonal Projection"
+  },
+  {
+    "page": "7",
+    "part": "42",
+    "typ": "text",
+    "content": "The orthogonal projection of vector b onto vector a:"
+  },
+  {
+    "page": "7",
+    "part": "43",
+    "typ": "katex",
+    "content": "\\text{proj}_{\\vec{a}} \\vec{b} = \\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{a}|^2} \\vec{a}"
+  },
+  {
+    "page": "7",
+    "part": "44",
+    "typ": "text",
+    "content": "This is useful for finding the component of one vector in the direction of another"
+  },
+  {
+    "page": "8",
+    "part": "45",
+    "typ": "title",
+    "content": "Applications"
+  },
+  {
+    "page": "8",
+    "part": "45",
+    "typ": "text",
+    "content": "Physics - Work: W = F · s = |F| · |s| · cos(φ)"
+  },
+  {
+    "page": "8",
+    "part": "46",
+    "typ": "text",
+    "content": "The work done by a force depends on the component in the direction of motion"
+  },
+  {
+    "page": "8",
+    "part": "47",
+    "typ": "text",
+    "content": "Orthogonality Testing: If a · b = 0, the vectors are perpendicular"
+  },
+  {
+    "page": "8",
+    "part": "48",
+    "typ": "text",
+    "content": "Computer Graphics: Used for lighting calculations and texture mapping"
+  },
+  {
+    "page": "8",
+    "part": "49",
+    "typ": "text",
+    "content": "Machine Learning: Similarity measures between data vectors"
+  }
+]
