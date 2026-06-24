@@ -253,6 +253,7 @@ function Content({ part, continueStage }) {
               onChange={setUserMatrix}
               disabled={[1,4,5].includes(continueStage)}
               fixedDimension={toBool(row.fixedDimension)}
+              enableText={toBool(row.enableText)}
             />
           )}
           {row.typ === "Equations" && (
