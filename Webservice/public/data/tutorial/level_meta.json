@@ -8,5 +8,15 @@
       "id": 2,
       "title": "Gauss Algorithm",
       "description": "elementary row operations"
+    },
+    {
+      "id": 6,
+      "title": "Determinants",
+      "description": "leibniz-formula"
+    },
+    {
+      "id": 7,
+      "title": "laplace expansion",
+      "description": "laplace"
     }
 ]
