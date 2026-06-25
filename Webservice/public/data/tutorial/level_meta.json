@@ -8,5 +8,10 @@
       "id": 2,
       "title": "Gauss Algorithm",
       "description": "elementary row operations"
+    },
+    {
+      "id": 4,
+      "title": "Orthogonal and Orthonormal Vectors",
+      "description": "orthogonal and orthonormal vectors, Gram-Schmidt process"
     }
 ]
