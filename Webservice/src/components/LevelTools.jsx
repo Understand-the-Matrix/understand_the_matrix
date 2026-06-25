@@ -14,6 +14,9 @@ import { Badge } from "primereact/badge";
  * @param {function} progressValue - progress bar value (0 - 100) 
  * @param {function} heartCount - only challenge: number of hearts (5 - 0) (is not yet in use)
  * @returns {JSX.Element}
+ * 
+ * @note Supports navigation between Tutorial Level 3 (Dot Product tutorial) and 
+ * Challenge Level 3 (Dot Product challenge) via mode switching.
  */
 export function Toolbar({ progressValue, heartCount=5 }){
   const { mode } = useParams();
@@ -141,7 +144,7 @@ export function NavigationArrows({disableBack, onBack, onNext}){
 export function ContinueBtn({stage=0, onContinue}){
   const { solutionOption } = useSolution();
   
-  const label = [2, 3].includes(stage) ? 'check' : 'continue';
+  const label = [2, 3, 5].includes(stage) ? 'check' : 'continue';
   return (
     <div id='continue_container'>
       {(stage >= 4 || stage === 1) && (
@@ -170,7 +173,7 @@ export function ContinueBtn({stage=0, onContinue}){
           onClick={onContinue} 
           label={label} 
           id={`continue_btn_${stage}`} 
-          disabled={[0, 2].includes(stage)}
+          disabled={[0, 2, 5].includes(stage)}
           style={{margin: 0}}
       />
       

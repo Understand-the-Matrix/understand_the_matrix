@@ -12,6 +12,9 @@ import { equal, smaller, randomInt, unaryMinus } from "mathjs";
  *
  * - Skips trivial identities `0 = 0`.
  * - Randomly moves some terms to the right-hand side (with sign inversion).
+ * 
+ * @note Used in matrix-based tutorials and challenges (levels 1-2).
+ * For scalar exercises like Dot Product (level 3), use ScalarInput instead.
  */
 export function Equations({ solMatrix }){
   const [equations, setEquations] = useState(['']);
@@ -144,4 +147,50 @@ export function SelectionButtons({ value , options, onSelect, disabled=false }) 
   );
 }
 
+/**
+ * Simple scalar input component for entering a single number.
+ * No size controls like EditableMatrix - just a clean input field.
+ *
+ * @param {string|number} value - Current input value
+ * @param {function} onChange - Callback when value changes
+ * @param {boolean} [disabled=false] - Disables input when true
+ * @param {string} [placeholder="Enter value"] - Placeholder text
+ * 
+ * @note Introduced for scalar exercises like Dot Product Challenge (Challenge Level 3).
+ * Converts numerical input to 1x1 matrix format for unified verification logic.
+ */
+export function ScalarInput({ value = "", onChange, disabled = false, placeholder = "Enter value" }) {
+  const handleChange = (e) => {
+    onChange(e.target.value);
+  };
+
+  return (
+    <div style={{ padding: '10px', textAlign: 'center' }}>
+      <input
+        type="text"
+        value={value}
+        onChange={handleChange}
+        disabled={disabled}
+        placeholder={placeholder}
+        style={{
+          padding: '8px 12px',
+          fontSize: '16px',
+          borderRadius: '6px',
+          border: '2px solid var(--color5)',
+          backgroundColor: 'var(--color1)',
+          color: 'var(--color5)',
+          textAlign: 'center',
+          minWidth: '120px'
+        }}
+        onFocus={(e) => {
+          e.target.style.borderColor = 'var(--color4)';
+          e.target.style.outline = 'none';
+        }}
+        onBlur={(e) => {
+          e.target.style.borderColor = 'var(--color5)';
+        }}
+      />
+    </div>
+  );
+}
 

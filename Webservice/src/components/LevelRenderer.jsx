@@ -4,7 +4,7 @@ import { StaticMatrix, EditableMatrix, MatrixHistory } from "./Matrix";
 import React, { useState, useEffect, useRef } from "react";
 import { ContinueBtn, LevelEndContent, NavigationArrows, Toolbar } from "./LevelTools";
 import { CalcButtons } from "./CalcButtons";
-import { Equations, SelectionButtons } from "./Exercise";
+import { Equations, SelectionButtons, ScalarInput } from "./Exercise";
 import SolutionManager from "./SolutionManager";
 import { useKeyMap } from "@/hooks/useKeyboard";
 import { useSolution } from "@/hooks/SolutionContext";
@@ -28,6 +28,9 @@ import { ProgressSpinner } from 'primereact/progressspinner';
  *   - Tutorial: navigation arrows
  *   - Challenge: continue button
  * - At the end of a level, renders `LevelEndContent` with links to the next level.
+ * 
+ * @note Challenge Level 3 (Dot Product) uses ScalarInput components for vector calculations.
+ * Supports both matrix-based and scalar-based exercises through conditional rendering.
 */
 export function LevelRenderer(){
   const { mode, id } = useParams();
@@ -39,6 +42,7 @@ export function LevelRenderer(){
   const [continueStage, setContinueStage] = useState(0);
   const [currentPart, setCurrentPart] = useState(1);
   const [progressValue, setProgressValue] = useState(0);
+  const [userMatrix, setUserMatrix] = useState(null);
   
   const partsOnLevel = Math.max(
       0,
@@ -83,18 +87,33 @@ export function LevelRenderer(){
           return;
         }
 
-        const maxPart = getMaxPart(page, levelData);
-        if (currentPart < maxPart) {
-            setCurrentPart((prev) => prev + 1);
-        } else {
-            // next page
-            setPage(String(Number(page) + 1));
-            setCurrentPart((prev) => prev + 1);
+        // Stage 4: Correct - move to next part
+        if(continueStage === 4){
+          const maxPart = getMaxPart(page, levelData);
+          if (currentPart < maxPart) {
+              setCurrentPart((prev) => prev + 1);
+          } else {
+              // next page
+              setPage(String(Number(page) + 1));
+              setCurrentPart((prev) => prev + 1);
+          }
+          if (partsOnLevel > 0) setProgressValue((prev) => prev + 100 / partsOnLevel);
+          setSolutionState(false);
+          setContinueStage(0);
+          setUserMatrix(null);
+          return;
         }
-        if (partsOnLevel > 0) setProgressValue((prev) => prev + 100 / partsOnLevel);
-        setSolutionState(false);
-        setContinueStage(0);
     }
+
+    // Auto-reset stage 5 (incorrect) to stage 2 after 3 seconds
+    useEffect(() => {
+      if (continueStage === 5) {
+        const timer = setTimeout(() => {
+          setContinueStage(2);
+        }, 3000);
+        return () => clearTimeout(timer);
+      }
+    }, [continueStage]);
 
     function back() {
       const prevPage = String(Number(page) - 1);
@@ -252,6 +271,26 @@ function Content({ part, continueStage }) {
               onChange={setUserMatrix}
               disabled={[1,4,5].includes(continueStage)}
               fixedDimension={toBool(row.fixedDimension)}
+            />
+          )}
+          {row.typ === "ScalarInput" && (
+            // Render scalar input for exercises like Dot Product (Challenge Level 3)
+            // Value stored as 1x1 matrix [[scalar]] for unified solution verification
+            <ScalarInput
+              value={userMatrix && userMatrix[0] && userMatrix[0][0] ? userMatrix[0][0].toString() : ""}
+              onChange={(val) => {
+                // Convert input to 1x1 matrix format for SolutionManager verification
+                try {
+                  const numVal = parseFloat(val);
+                  if (!isNaN(numVal) || val === "") {
+                    setUserMatrix([[val]]);
+                  }
+                } catch (e) {
+                  console.log(e);
+                }
+              }}
+              disabled={[1,4,5].includes(continueStage)}
+              placeholder={row.placeholder || "Enter value"}
             />
           )}
           {row.typ === "Equations" && (

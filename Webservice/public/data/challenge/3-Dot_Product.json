@@ -1,0 +1,166 @@
+[
+  {
+    "page": "1",
+    "part": "1",
+    "solution": "number",
+    "acceptance": 0,
+    "navigation": "continue",
+
+    "staticData": {
+      "vectorA": [1, 2, 3],
+      "vectorB": [4, 5, 6],
+      "solution": 32
+    }
+  },
+  {
+    "page": "1",
+    "part": "1",
+    "typ": "title",
+    "content": "Calculate the Dot Product"
+  },
+  {
+    "page": "1",
+    "part": "1",
+    "typ": "text",
+    "content": "Calculate a · b for the following vectors:"
+  },
+  {
+    "page": "1",
+    "part": "1",
+    "typ": "katex",
+    "content": "\\vec{a} \\cdot \\vec{b} = a_1 b_1 + a_2 b_2 + a_3 b_3"
+  },
+  {
+    "page": "1",
+    "part": "1",
+    "typ": "text",
+    "content": ""
+  },
+  {
+    "page": "1",
+    "part": "1",
+    "typ": "katex",
+    "content": "\\begin{array}{cc} \\text{Vector a:} & \\text{Vector b:} \\\\ \\vec{a} = \\begin{pmatrix} 1 \\\\ 2 \\\\ 3 \\end{pmatrix} & \\vec{b} = \\begin{pmatrix} 4 \\\\ 5 \\\\ 6 \\end{pmatrix} \\end{array}"
+  },
+  {
+    "page": "1",
+    "part": "1",
+    "typ": "text",
+    "content": "Enter the result of a · b:"
+  },
+  {
+    "page": "1",
+    "part": "1",
+    "typ": "ScalarInput",
+    "placeholder": "Result"
+  },
+  {
+    "page": "2",
+    "part": "2",
+    "solution": "number",
+    "acceptance": 0,
+    "navigation": "continue",
+
+    "staticData": {
+      "vector": [3, 4],
+      "solution": 5
+    }
+  },
+  {
+    "page": "2",
+    "part": "2",
+    "typ": "title",
+    "content": "Calculate the Vector Length"
+  },
+  {
+    "page": "2",
+    "part": "2",
+    "typ": "text",
+    "content": "Calculate the length (magnitude) of the vector using the dot product:"
+  },
+  {
+    "page": "2",
+    "part": "2",
+    "typ": "katex",
+    "content": "|\\vec{a}| = \\sqrt{\\vec{a} \\cdot \\vec{a}} = \\sqrt{a_1^2 + a_2^2}"
+  },
+  {
+    "page": "2",
+    "part": "2",
+    "typ": "text",
+    "content": "Vector a:"
+  },
+  {
+    "page": "2",
+    "part": "2",
+    "typ": "katex",
+    "content": "\\vec{a} = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix}"
+  },
+  {
+    "page": "2",
+    "part": "2",
+    "typ": "text",
+    "content": "Enter the length:"
+  },
+  {
+    "page": "2",
+    "part": "2",
+    "typ": "ScalarInput",
+    "placeholder": "Length"
+  },
+  {
+    "page": "3",
+    "part": "3",
+    "solution": "number",
+    "acceptance": 1,
+    "navigation": "continue",
+
+    "staticData": {
+      "vectorA": [1, 0],
+      "vectorB": [1, 1],
+      "solution": 45
+    }
+  },
+  {
+    "page": "3",
+    "part": "3",
+    "typ": "title",
+    "content": "Find the Angle Between Vectors"
+  },
+  {
+    "page": "3",
+    "part": "3",
+    "typ": "text",
+    "content": "Calculate the angle φ (phi) between these two vectors in degrees:"
+  },
+  {
+    "page": "3",
+    "part": "3",
+    "typ": "katex",
+    "content": "\\varphi = \\arccos\\left(\\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{a}| \\cdot |\\vec{b}|}\\right)"
+  },
+  {
+    "page": "3",
+    "part": "3",
+    "typ": "text",
+    "content": ""
+  },
+  {
+    "page": "3",
+    "part": "3",
+    "typ": "katex",
+    "content": "\\begin{array}{cc} \\text{Vector a:} & \\text{Vector b:} \\\\ \\vec{a} = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} & \\vec{b} = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\end{array}"
+  },
+  {
+    "page": "3",
+    "part": "3",
+    "typ": "text",
+    "content": "Enter the angle in degrees:"
+  },
+  {
+    "page": "3",
+    "part": "3",
+    "typ": "ScalarInput",
+    "placeholder": "Angle in degrees"
+  }
+]
