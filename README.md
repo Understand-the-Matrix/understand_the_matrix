@@ -18,4 +18,4 @@ This project is part of the module "Software-Design"
 ## Documentation
 
 The component documentation was created using JSDoc. You can find the link to the docs
-[here](https://skyejxn.github.io/understand_the_matrix).
+[here](https://understand-the-matrix.github.io/understand_the_matrix/).
