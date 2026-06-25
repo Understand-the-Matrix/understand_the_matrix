@@ -112,20 +112,38 @@
   {
     "page": "3",
     "part": "9",
+    "typ": "text",
+    "content": ""
+  },
+  {
+    "page": "3",
+    "part": "9",
     "typ": "katex",
     "content": "\\det\\left(\\begin{pmatrix} 2-\\lambda & 0 \\\\ 0 & 3-\\lambda \\end{pmatrix}\\right)=0"
   },
   {
     "page": "3",
     "part": "9",
-    "typ": "katex",
-    "content": "(2-\\lambda)(3-\\lambda)=0"
+    "typ": "text",
+    "content": ""
   },
   {
     "page": "3",
     "part": "9",
     "typ": "katex",
-    "content": "\\lambda_1 = 2, \\quad \\lambda_2 = 3"
+    "content": "\\Rightarrow (2-\\lambda)(3-\\lambda)=0"
+  },
+  {
+    "page": "3",
+    "part": "9",
+    "typ": "text",
+    "content": ""
+  },
+  {
+    "page": "3",
+    "part": "9",
+    "typ": "katex",
+    "content": "\\Rightarrow \\lambda_1 = 2, \\quad \\lambda_2 = 3"
   },
 
   {
@@ -161,8 +179,20 @@
   {
     "page": "4",
     "part": "12",
+    "typ": "text",
+    "content": ""
+  },
+  {
+    "page": "4",
+    "part": "12",
     "typ": "katex",
     "content": "\\begin{pmatrix} 0 & 0 \\\\ 0 & 1 \\end{pmatrix}\\begin{pmatrix} x_1 \\\\ x_2 \\end{pmatrix}=\\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix}"
+  },
+  {
+    "page": "4",
+    "part": "12",
+    "typ": "text",
+    "content": ""
   },
   {
     "page": "4",
@@ -170,11 +200,17 @@
     "typ": "katex",
     "content": "x_2 = 0, \\quad x_1 \\in \\mathbb{R}"
   },
+    {
+    "page": "4",
+    "part": "12",
+    "typ": "text",
+    "content": ""
+  },
   {
     "page": "4",
     "part": "12",
     "typ": "katex",
-    "content": "v_1 = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}"
+    "content": "\\Rightarrow v_1 = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}"
   },
 
   {
