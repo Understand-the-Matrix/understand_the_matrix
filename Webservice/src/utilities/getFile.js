@@ -16,7 +16,7 @@ export async function getFile(mode, id){
     if (!level) return new Response(JSON.stringify({error: "File not found"}), {status: 400});
     console.log(level);
 
-    const title = level.title.replace(" ", "_");
+    const title = level.title.replaceAll(" ", "_");
     console.log(`title: ${title}`);
     const filename = `${id}-${title}.json`;
     const path = `/data/${mode}/${filename}`
