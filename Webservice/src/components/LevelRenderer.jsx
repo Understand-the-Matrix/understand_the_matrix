@@ -1,6 +1,7 @@
 import "../styles/LevelDesign.css"
 import { InlineMath } from "react-katex";
-import { StaticMatrix, EditableMatrix, MatrixHistory } from "./Matrix";
+import { StaticMatrix, EditableMatrix, MatrixHistory, ClickableDeterminant } from "./Matrix";
+import { fraction } from "mathjs";
 import React, { useState, useEffect, useRef } from "react";
 import { ContinueBtn, LevelEndContent, NavigationArrows, Toolbar } from "./LevelTools";
 import { CalcButtons } from "./CalcButtons";
@@ -60,6 +61,7 @@ export function LevelRenderer(){
 
     // Reset view state when navigating to a different mode or level id
     useEffect(() => {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setPage("1");
       setLevelData([]);
       setCurrentPart(1);
@@ -253,6 +255,11 @@ function Content({ part, continueStage }) {
               disabled={[1,4,5].includes(continueStage)}
               fixedDimension={toBool(row.fixedDimension)}
             />
+          )}
+          {row.typ === "ClickableDeterminant" && (
+            <div className="matrix-row wrap-group">
+              <ClickableDeterminant data={parseMatrix(row.data)}/>
+            </div>
           )}
           {row.typ === "Equations" && (
             <Equations
