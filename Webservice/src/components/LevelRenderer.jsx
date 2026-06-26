@@ -254,6 +254,7 @@ function Content({ part, continueStage }) {
               disabled={[1,4,5].includes(continueStage)}
               fixedDimension={toBool(row.fixedDimension)}
               enableText={toBool(row.enableText)}
+              textSymbols={row.textSymbols}
             />
           )}
           {row.typ === "Equations" && (
