@@ -1,0 +1,372 @@
+[
+  {
+    "page": "1",
+    "part": "1",
+    "solution": "options",
+    "navigation": "check",
+    "options": {
+      "possibilities": ["Eigenvectors do not change their direction under the transformation.", 
+                        "Eigenvectors are always orthogonal to each other.", 
+                        "Eigenvectors only exist for diagonal matrices."],
+      "solution": "Eigenvectors do not change their direction under the transformation."
+    }
+  },
+  {
+    "page": "1",
+    "part": "1",
+    "typ": "title",
+    "content": "Geometric Meaning of Eigenvectors"
+  },
+  {
+    "page": "1",
+    "part": "1",
+    "typ": "text",
+    "content": "Which of the following statements correctly describes the geometric meaning of eigenvectors?"
+  },
+  {
+    "page": "1",
+    "part": "1",
+    "typ": "SelectionButtons"
+  },
+
+  {
+    "page": "2",
+    "part": "1",
+    "solution": "options",
+    "navigation": "check",
+    "options": {
+      "possibilities": ["It is a number that makes the matrix 𝐴 invertible.", 
+                        "It is a scalar that tells how much an eigenvector is stretched or compressed when transformed by 𝐴.", 
+                        "It is the length of a vector after applying the matrix 𝐴.",
+                        "It is a value that counts how many independent directions the matrix can rotate."],
+      "solution": "It is a scalar that tells how much an eigenvector is stretched or compressed when transformed by 𝐴."
+    }
+  },
+  {
+    "page": "2",
+    "part": "2",
+    "typ": "title",
+    "content": "Meaning of an Eigenvalue"
+  },
+  {
+    "page": "2",
+    "part": "2",
+    "typ": "text",
+    "content": "Which statement best describes what an eigenvalue represents in the context of a linear transformation given by a matrix 𝐴?"
+  },
+  {
+    "page": "2",
+    "part": "2",
+    "typ": "SelectionButtons"
+  },
+
+
+
+  {
+    "page": "3",
+    "part": "3",
+    "solution": "options",
+    "navigation": "check",
+    "options": {
+      "possibilities": ["\\det(A - \\lambda \\cdot I) = 0", 
+                        "A - \\lambda \\cdot I = 0", 
+                        "\\det(A) = 0", 
+                        "(A - I) \\cdot v = 0"],
+      "solution": "\\det(A - \\lambda \\cdot I) = 0",
+      "typ": "katex"
+    }
+  },
+  {
+    "page": "3",
+    "part": "3",
+    "typ": "title",
+    "content": "The Characteristic Equation"
+  },
+  {
+    "page": "3",
+    "part": "3",
+    "typ": "text",
+    "content": "To compute the eigenvalues of a matrix, you must set up the characteristic equation."
+  },
+  {
+    "page": "3",
+    "part": "3",
+    "typ": "text",
+    "content": "Which of the following expressions is correct?"
+  },
+  {
+    "page": "3",
+    "part": "3",
+    "typ": "SelectionButtons"
+  },
+
+    {
+    "page": "4",
+    "part": "4",
+    "solution": "options",
+    "navigation": "check",
+    "options": {
+      "possibilities": ["\\lambda I = \\begin{pmatrix} \\lambda & 0 & 0 \\\\ 0 & \\lambda & 0 \\\\ 0 & 0 & \\lambda \\\\ \\end{pmatrix}", 
+                        "\\lambda I = \\begin{pmatrix} \\lambda & \\lambda & \\lambda \\\\ \\lambda & \\lambda & \\lambda \\\\ \\lambda & \\lambda & \\lambda \\\\ \\end{pmatrix}", 
+                        "\\lambda I = \\begin{pmatrix} \\lambda \\\\ \\lambda \\\\ \\lambda \\\\ \\end{pmatrix}", 
+                        "\\lambda I = \\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\\\ \\end{pmatrix}"],
+      "solution": "\\lambda I = \\begin{pmatrix} \\lambda & 0 & 0 \\\\ 0 & \\lambda & 0 \\\\ 0 & 0 & \\lambda \\\\ \\end{pmatrix}",
+      "typ": "katex"
+    }
+  },
+  {
+    "page": "4",
+    "part": "4",
+    "typ": "title",
+    "content": "The Characteristic Equation"
+  },
+  {
+    "page": "4",
+    "part": "4",
+    "typ": "katex",
+    "content": "\\text{In the characteristic equation} \\det(A - \\lambda \\cdot I) = 0 \\\\ \\text{the expression} \\lambda I \\text{appears.} \\\\ \\text{What does this represent in} \\mathbb{R}^3 \\text ?"
+  },  
+  {
+    "page": "4",
+    "part": "4",
+    "typ": "SelectionButtons"
+  },
+
+  {
+    "page": "5",
+    "part": "5",
+    "solution": "matrix",
+    "navigation": "continue",
+    "acceptance": 0,
+    "solutionMatrix": [
+      ["2-λ", "6", "1"],
+      ["-3", "1-λ", "2"],
+      ["4", "-5", "-2-λ"]
+    ]
+  },
+  {
+    "page": "5",
+    "part": "5",
+    "typ": "text",
+    "content": "To find the eigenvalues, set up the characteristic equation for the matrix"
+  },
+  {
+    "page": "5",
+    "part": "5",
+    "typ": "katex",
+    "content": "A= \\begin{pmatrix} 2 & 6 & 1 \\\\ -3 & 1 & 2 \\\\ 4 & -5 & -2 \\\\ \\end{pmatrix}"
+  },
+  {
+    "page": "5",
+    "part": "5",
+    "typ": "text",
+    "content": ""
+  },
+  {
+    "page": "5",
+    "part": "5",
+    "typ": "katex",
+    "content": "\\det(A - \\lambda \\cdot I) ="
+  },
+  {
+    "page": "5",
+    "part": "5",
+    "typ": "EditableMatrix",
+    "rows": 3,
+    "columns": 3,
+    "resultcol": "false",
+    "determinant": "true",
+    "enableText": "true",
+    "fixedDimension": "false",
+    "textSymbols": ["λ"]
+  },
+
+  {
+    "page": "6",
+    "part": "6",
+    "solution": "options",
+    "navigation": "check",
+    "options": {
+      "possibilities": ["(3- \\lambda ) \\cdot (- \\lambda ) - (-3)", 
+                        "(3- \\lambda ) \\cdot (- \\lambda ) + (-3)", 
+                        "(3- \\lambda ) + (- \\lambda ) \\cdot (-3)",
+                        "(3- \\lambda ) - (- \\lambda ) \\cdot (-3)"],
+      "solution": "(3- \\lambda ) \\cdot (- \\lambda ) - (-3)",
+      "typ": "katex"
+    }
+  },
+  {
+    "page": "6",
+    "part": "6",
+    "typ": "text",
+    "content": "In an example, the characteristic equation looks like this:"
+  },
+  {
+    "page": "6",
+    "part": "6",
+    "typ": "katex",
+    "content": "\\det(A - \\lambda \\cdot I) = \\begin{vmatrix} 3- \\lambda & 1 \\\\ -3 & - \\lambda \\\\ \\end{vmatrix}"
+  },
+  {
+    "page": "6",
+    "part": "6",
+    "typ": "text",
+    "content": "What does the next calculation step look like?"
+  },
+  {
+    "page": "6",
+    "part": "6",
+    "typ": "SelectionButtons"
+  },
+
+    {
+    "page": "7",
+    "part": "7",
+    "solution": "options",
+    "navigation": "check",
+    "options": {
+      "possibilities": ["\\lambda_1 = 7, \\lambda_2 = 3", 
+                        "\\lambda_1 = - 7, \\lambda_2 = - 3", 
+                        "\\lambda_1 = 1, \\lambda_2 = - 1",
+                        "\\lambda_1 = - 7, \\lambda_2 = 3"],
+      "solution": "\\lambda_1 = 7, \\lambda_2 = 3",
+      "typ": "katex"
+    }
+  },
+  {
+    "page": "7",
+    "part": "7",
+    "typ": "text",
+    "content": "In an example, the characteristic equation looks like this:"
+  },
+  {
+    "page": "7",
+    "part": "7",
+    "typ": "katex",
+    "content": "\\det(A - \\lambda \\cdot I) = (7- \\lambda ) \\cdot (3 - \\lambda ) = 0"
+  },
+  {
+    "page": "7",
+    "part": "7",
+    "typ": "text",
+    "content": "What are the eigenvalues?"
+  },
+  {
+    "page": "7",
+    "part": "7",
+    "typ": "SelectionButtons"
+  },
+
+  {
+    "page": "8",
+    "part": "8",
+    "solution": "options",
+    "navigation": "continue",
+    "acceptance": 0,
+    "solutionMatrix":[
+      [-1,1,0],
+      [0,0,1],
+      [0,0,1]
+
+    ]
+  },
+  {
+    "page": "8",
+    "part": "8",
+    "typ": "text",
+    "content": "The eigenvalues of the following matrix have been found:"
+  },
+  {
+    "page": "8",
+    "part": "8",
+    "typ": "katex",
+    "content": "A= \\begin{pmatrix} 1 & 1 & 0 \\\\ 0 & 2 & 1 \\\\ 0 & 0 & 3 \\\\ \\end{pmatrix}"
+  },
+  {
+    "page": "8",
+    "part": "8",
+    "typ": "katex",
+    "content": "\\lambda_1 = 1, \\lambda_2 = 2, \\lambda_3 = 3"
+  },
+  {
+    "page": "8",
+    "part": "8",
+    "typ": "text",
+    "content": ""
+  },
+  {
+    "page": "8",
+    "part": "8",
+    "typ": "katex",
+    "content": "\\text{Set up the homogeneous system} (A - \\lambda I) \\text{for the eigenvalue} \\lambda_2 = 2."
+  },
+  {
+    "page": "8",
+    "part": "8",
+    "typ": "EditableMatrix",
+    "rows": 3,
+    "columns": 3,
+    "resultcol": "false",
+    "determinant": "false",
+    "fixedDimension": "true"
+  },
+
+  {
+    "page": "9",
+    "part": "9",
+    "solution": "options",
+    "navigation": "check",
+    "options": {
+      "possibilities": [
+        "v = \\begin{pmatrix} t \\\\ t \\\\ 0 \\end{pmatrix} \\rm ; t \\in \\mathbb{R}",
+        "v = \\begin{pmatrix} t \\\\ -t \\\\ 0 \\end{pmatrix} \\rm ; t \\in \\mathbb{R}",
+        "v = \\begin{pmatrix} t \\\\ t \\\\ s \\end{pmatrix} \\rm ; t,s \\in \\mathbb{R}",
+        "v = \\begin{pmatrix} 0 \\\\ 0 \\\\ t \\end{pmatrix} \\rm ; t \\in \\mathbb{R}"
+      ],
+      "solution": "v = \\begin{pmatrix} t \\\\ t \\\\ 0 \\end{pmatrix} \\rm ; t \\in \\mathbb{R}",
+      "typ": "katex"
+    }
+  },
+  {
+    "page": "9",
+    "part": "9",
+    "typ": "title",
+    "content": "Finding eigenvectors"
+  },
+  {
+    "page": "9",
+    "part": "9",
+    "typ": "text",
+    "content": "In an example for finding an eigenvector, the homogeneous system"
+  },
+  {
+    "page": "9",
+    "part": "9",
+    "typ": "katex",
+    "content": "(A - \\lambda I)x = 0"
+  },
+  {
+    "page": "9",
+    "part": "9",
+    "typ": "text",
+    "content": "was solved for an eigenvalue λ using the Gauss-Jordan algorithm, resulting in:"
+  },
+  {
+    "page": "9",
+    "part": "9",
+    "typ": "katex",
+    "content": "\\begin{pmatrix} 1 & -1 & 0 \\\\ 0 & 0 & 1 \\\\ 0 & 0 & 0 \\\\ \\end{pmatrix} x = 0"
+  },
+  {
+    "page": "9",
+    "part": "9",
+    "typ": "text",
+    "content": "Which option represents the general form of the eigenvector?"
+  },
+  {
+    "page": "9",
+    "part": "9",
+    "typ": "SelectionButtons"
+  }
+
+]

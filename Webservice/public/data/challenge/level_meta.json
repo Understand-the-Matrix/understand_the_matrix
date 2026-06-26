@@ -8,5 +8,10 @@
       "id": 2,
       "title": "Gauss Algorithm",
       "description": "elementary row operations"
+    },
+    {
+      "id": 10,
+      "title": "Eigenvalues & Eigenvectors",
+      "description": "finding eigenvalues and eigenvectors"
     }
 ]
