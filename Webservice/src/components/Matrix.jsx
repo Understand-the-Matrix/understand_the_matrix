@@ -48,7 +48,7 @@ export function StaticMatrix({data = [[1,2,3],[4,5,6],[7,8,9]], resultCol = fals
  * @param {number} cols - number of columns (including result column if `resultCol` is true)
  * @param {boolean} resultCol - is the last column a results column
  * @param {boolean} det - is the matrix a determinant
- * @param {(number|fraction)[][]} userMatrix - Optional initial matrix to prefill the inputs.
+ * @param {(number[][] |fraction[][] )} userMatrix - Optional initial matrix to prefill the inputs.
  * @param {boolean} initialMatrixValue - If true, the component prefill the inputs with the `userMatrix` once.
  * @param {fraction[][]} onChange - Callback, that returns the current matrix as Fractions
  * @param {boolean} [disabled=false] - disables all user inputs when true
