@@ -6,6 +6,7 @@ import { ButtonGroup } from 'primereact/buttongroup';
 import { useParams, useNavigate } from "react-router-dom";
 import { useSolution } from "@/hooks/SolutionContext";
 import { Badge } from "primereact/badge";
+import { InlineMath } from "react-katex";
 
 /**
  * Component that Renders a dynamic progress bar
@@ -139,7 +140,7 @@ export function NavigationArrows({disableBack, onBack, onNext}){
  * @returns {JSX.Element}
  */
 export function ContinueBtn({stage=0, onContinue}){
-  const { solutionOption } = useSolution();
+  const { solutionOption, optionTyp } = useSolution();
   
   const label = [2, 3].includes(stage) ? 'check' : 'continue';
   return (
@@ -162,7 +163,10 @@ export function ContinueBtn({stage=0, onContinue}){
           {stage === 5 && (
             <div className="feedback_row">
               <div>solution:</div>
-              <div>{solutionOption}</div>
+              <div>{optionTyp == "katex" 
+                      ? <InlineMath math={solutionOption} />
+                      : solutionOption
+              }</div>
           </div>)}
         </div>
       )}

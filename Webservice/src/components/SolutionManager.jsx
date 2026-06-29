@@ -58,6 +58,7 @@ export default function SolutionManager({ children, Data, page, part, continueSt
   const [options, setOptions] = useState(null);
   const [solutionOption, setSolutionOption] = useState(null);
   const [userOption, setUserOption] = useState(null);
+  const [optionTyp, setOptionTyp] = useState("text");
   
   const [solutionMatrix, setSolutionMatrix] = useState(null);
   const [userMatrix, setUserMatrix] = useState(null);
@@ -81,6 +82,7 @@ export default function SolutionManager({ children, Data, page, part, continueSt
     setUserOption(null);
     setSolutionOption(null);
     setOptions(null);
+    setOptionTyp("text");
     setSolutionState(false);
     setRowOperationHistory([]);
 
@@ -172,6 +174,9 @@ export default function SolutionManager({ children, Data, page, part, continueSt
         if (rowWithSolution.options.solution !== "dynamic") {
           setSolutionOption(rowWithSolution.options.solution);
         }
+        if (rowWithSolution.options.typ !== undefined) {
+          setOptionTyp(rowWithSolution.options.typ);
+        }
       }
       // --------------------------
       // acceptance
@@ -184,6 +189,12 @@ export default function SolutionManager({ children, Data, page, part, continueSt
       // -------------------------
       if (rowWithSolution.navigation === 'check'){
         setContinueStage(2);
+      }
+      if (rowWithSolution.userMatrix !== undefined){
+        setUserMatrix(rowWithSolution.userMatrix);
+      }
+      if (rowWithSolution.solutionMatrix !== undefined){
+        setSolutionMatrix(rowWithSolution.solutionMatrix);
       }
     
     }
@@ -237,6 +248,7 @@ export default function SolutionManager({ children, Data, page, part, continueSt
         setUserOption,
         userOption,
         solutionOption,
+        optionTyp,
         solutionMatrix,
         setSolutionMatrix,
         userMatrix,
